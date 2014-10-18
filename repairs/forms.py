@@ -1,9 +1,9 @@
 from django.forms import forms
-import repairs.models
+from repairs.models import ServiceEngineer, Machine, Customer
 
-class TechForm(forms.Form):
+class SerciceEngineerForm(forms.Form):
     class Meta:
-        model = Technician
+        model = ServiceEngineer 
 
 class MachineForm(forms.Form):
     class Meta:
