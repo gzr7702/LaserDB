@@ -1,0 +1,55 @@
+
+
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <h1>Welcome to the Laser Database</h1>
+    <div>
+    <h3>Customer:</h3>
+    {{ service_order.customer }}
+    RMA: {{ service_order.rma_number }} Date: {{ service_order.date }}
+    </div>
+    <div>
+    <h3>Address:</h3>
+    <p>{{ service_order.customer.billing_address }}</p>
+    </div>
+    <div>
+    <h3>Machine:</h3>
+    <p>{{ service_order.machine }}</p>
+    </div>
+    <div>
+    <h3>Condition:</h3>
+    <p>{{ service_order.condition }}</p>
+    </div>
+    <div>
+    <h3>Correction:</h3>
+    <p>{{ service_order.correction }}</p>
+    </div>
+    <div>
+    <h3>Notes:</h3>
+    <p>{{ service_order.notes }}</p>
+    </div>
+    <div>
+    <h3>Parts:</h3>
+    {% for part in service_order.parts.all %}
+        <p>{{ part }}</p>
+    {% endfor %}
+    </div>
+    <div>
+    <h3>Engineer:</h3>
+    <p>{{ service_order.engineer }}</p>
+    </div>
+    <div>
+    <h3>Charges:</h3>
+    <p>{{ service_order.charges }}</p>
+    </div>
+    <div>
+    <h3>Payment:</h3>
+    <p>{{ service_order.payment_category }}</p>
+    </div>
+    <div>
+    <h3>Service:</h3>
+    <p>{{ service_order.service_category }}</p>
+    </div>
+{% endblock %}

@@ -3,6 +3,7 @@ from django.db.models.fields import IntegerField, CharField, TextField
 from Crypto.Random.random import choice
 from Cython.Shadow import NULL
 from gi.overrides.keysyms import blank
+import pprint
 
 class Machine(models.Model):
     serial_number = models.IntegerField(primary_key=True)
@@ -13,7 +14,10 @@ class Machine(models.Model):
     pulse_count = models.IntegerField()
     
     def __str__(self):
-        return str(self.serial_number)
+        items = [str(self.serial_number), self.model, str(self.manufacture_date),\
+                 str(self.software_version), self.passwd, str(self.pulse_count)]
+        item_string = '\t'.join(items)
+        return item_string
     
 class Address(models.Model):
     street = models.CharField(max_length=200)
@@ -24,7 +28,10 @@ class Address(models.Model):
     contact_name = models.CharField(max_length=200)
     
     def __str__(self):
-        return self.street
+        items = [self.contact_name, self.street, self.city, self.state, \
+                 str(self.zip), self.phone]
+        item_string = '\t'.join(items)
+        return item_string
 
 class Customer(models.Model):
     name = models.CharField(max_length=200)
@@ -33,7 +40,9 @@ class Customer(models.Model):
     billing_address = models.ForeignKey(Address, related_name='address_billing')
 
     def __str__(self):
-        return self.name
+        items = [self.name, self.email]
+        item_string = '\t'.join(items)
+        return item_string
     
 class ServiceEngineer(models.Model):
     first_name = CharField(max_length=200)
@@ -49,7 +58,9 @@ class Part(models.Model):
     quantity = models.IntegerField()
 
     def __str__(self):
-        return str(self.serial_number)
+        items = [str(self.serial_number), str(self.part_number), str(self.price), str(self.quantity)]
+        item_string = '\t'.join(items)
+        return item_string
     
 class Charge(models.Model):
     purchase_order = models.IntegerField()
@@ -72,6 +83,8 @@ class ServiceLog(models.Model):
     parts = models.ManyToManyField(Part)
     engineer = models.OneToOneField(ServiceEngineer)
     charges = models.OneToOneField(Charge)
+    
+    #this should be in the form model, no?================================
     
     PAYMENT_CATEGORY_CHOICES = (
                                 ('installation', 'Installation'), 

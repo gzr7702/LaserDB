@@ -4,5 +4,13 @@
 
 {% block content %}
     <h1>Submit a Repair Form</h1>
-    <a href="/repairs/repair_form">here</a>
+
+    <ul>
+    {% for svc in service_list %}
+    <li><a href="individual-report/{{ svc.rma_number }}">{{ svc.rma_number }}</a></li>
+    {% endfor %}
+    </ul>
+    
+    <p>Submit a new Service Log</p>
+    <a href="/repairs/repair-form">here</a>
 {% endblock %}
