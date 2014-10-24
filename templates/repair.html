@@ -3,7 +3,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Submit a Repair Form</h1>
+    <h1>Current Service Order Forms</h1>
 
     <ul>
     {% for svc in service_list %}
@@ -11,6 +11,4 @@
     {% endfor %}
     </ul>
     
-    <p>Submit a new Service Log</p>
-    <a href="/repairs/repair-form">here</a>
 {% endblock %}
