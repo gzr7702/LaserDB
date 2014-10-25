@@ -1,0 +1,13 @@
+
+
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+    <h3>Serial Number</h3>{{ part.serial_number }}
+    <h3>Part Number</h3>{{ part.part_number }}
+    <h3>Price </h3>${{ part.price }}
+    <h3>Location </h3>{{ part.location }}
+
+{% endblock %}

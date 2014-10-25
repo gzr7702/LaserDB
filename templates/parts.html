@@ -3,8 +3,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Parts DB</h1>
+    <h1>Parts</h1>
 
-    <p>This is where we'll put the parts database</p>
+    <ul>
+        {% for part in parts_list %}
+            <li><a href="parts-report/{{ part.serial_number }}">{{ part.serial_number }}</a></li>
+        {% endfor %}
+    </ul>
     
 {% endblock %}

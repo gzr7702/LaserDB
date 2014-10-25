@@ -1,7 +1,7 @@
 from django.shortcuts import render, render_to_response
 from django.core.context_processors import request
 from django.http import response
-from repairs.models import ServiceLog
+from repairs.models import ServiceLog, Part
 from django.contrib.auth.decorators import login_required
 
 @login_required

@@ -1,0 +1,19 @@
+The Laser Database
+
+Repairs:
+
+This is a database to track the Service Order forms completed in the field by engineers
+
+Parts:
+
+Tracks the parts that are on hand.
+
+
+To do:
+
+- Add Login screen.
+- Put site on pythonanywhere.com
+- Clean up Service Order Report Page
+- Add search for RMA, Part serial number, Engineer
+- Add forms to create new Service Order.
+- Add forms to create new Part.
