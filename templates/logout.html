@@ -1,0 +1,13 @@
+{% extends 'login_base.html' %}          
+
+    {% block content %}
+          
+          <div class="inner cover">
+            <h1 class="cover-heading">You are officially logged out.</h1>
+            <p class="lead">Come back soon now, ya hear?</p>
+            <form action="/accounts/login/">
+                <input type="submit" value="Login" class="btn-default btn-lg">
+            </form>
+          </div>
+
+    {% endblock %}

@@ -11,9 +11,10 @@ Tracks the parts that are on hand.
 
 To do:
 
-- Add Login screen.
+- Fix text boxes on login so you can see text.
 - Put site on pythonanywhere.com
 - Clean up Service Order Report Page
 - Add search for RMA, Part serial number, Engineer
 - Add forms to create new Service Order.
 - Add forms to create new Part.
+- change logout/login/back buttons to be slightly different..

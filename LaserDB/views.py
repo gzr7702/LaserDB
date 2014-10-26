@@ -3,6 +3,7 @@ from django.core.context_processors import request
 from django.http import response, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.core.context_processors import csrf
+from django.contrib import auth
 
 @login_required
 def home(request):
@@ -33,4 +34,4 @@ def invalid_login(request):
     return render_to_response('invalid_login.html')
 
 def logout(request):
-    return render_to_response('invalid_login.html')
+    return render_to_response('logout.html')
