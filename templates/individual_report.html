@@ -1,61 +1,124 @@
-
-
 {% extends 'base.html' %}
 
-
 {% block content %}
+
  <div class="row">
-    <div class="col-md-8"><strong>RMA Number:</strong><br>{{ service_order.rma_number }}</div>
-    <div class="col-md-4"><strong>Service Date:</strong><br>{{ service_order.date }}</div>
+    <div class="col-md-6">
+        <address>
+            <strong>Customer:</strong><br>
+            {{ service_order.customer.name }}<br>
+            email: {{ service_order.customer.email }}
+        </address>
+    </div>
+
+    <div class="col-md-6">
+        <strong>RMA Number:</strong> {{ service_order.rma_number }}<br>
+        <strong>Service Date:</strong> {{ service_order.date }}
+    </div>
+ </div>
+
+
+ <div class="row">
+    <div class="col-md-6">
+        <address>
+            <strong>Street Address:</strong><br>
+            Street: {{ service_order.customer.street_address.street }}<br>
+            City: {{ service_order.customer.street_address.city }}<br>
+            State: {{ service_order.customer.street_address.state }}<br>
+            Zip: {{ service_order.customer.street_address.zip }}<br>
+            Contact: {{ service_order.customer.street_address.contact }}
+            Phone: {{ service_order.customer.street_address.phone }}
+        </address>
+    </div>
+    <div class="col-md-6">
+        <address>
+            <strong>Billing Address:</strong><br>
+            Street: {{ service_order.customer.billing_address.street }}<br>
+            City: {{ service_order.customer.billing_address.city }}<br>
+            State: {{ service_order.customer.billing_address.state }}<br>
+            Zip: {{ service_order.customer.billing_address.zip }}<br>
+            Contact: {{ service_order.customer.billing_address.contact }}
+            Phone: {{ service_order.customer.billing_address.phone }}
+        </address>
+    </div>
  </div>
 
  <div class="row">
-    <div class="col-md-12"><strong>Customer:</strong>{{ service_order.customer }}</div>
+    <div class="col-md-12">
+        <address>
+            <strong>Machine:</strong><br>
+            Model: {{ service_order.machine.model }}<br>
+            Serial Number: {{ service_order.machine.serial_number }}<br>
+            Manufacture Date: {{ service_order.machine.manufacture_date}}<br>
+        </address>
+    </div>
+</div>
+
+ <div class="row">
+     <div class="col-md-6">
+        <address>
+            <strong>Condition:</strong><br>
+            {{ service_order.condition}}
+        </address>
+    </div>
+
+    <div class="col-md-6">
+        <address>
+            <strong>Correction:</strong><br>
+            {{ service_order.correction }}
+        </address>
+    </div>
+ </div>
+
+ <div class="row">
+    <div class="col-md-12">
+        <address>
+        <strong>Notes:</strong><br>
+        {{ service_order.notes }}
+        </address>
+    </div>
+ </div>
+
+ <div class="row">
+    <div class="col-md-12">
+        <address>
+        <strong>Parts</strong>:<br>
+            {% for part in service_order.parts.all %}
+                <em>Serial Number:</em> {{ part.serial_number }}
+                <em>Part Number:</em> {{ part.part_number }}
+                <em>Price:</em> {{ part.price }}
+                <em>Quantity:</em> {{ part.quantity }}
+            {% endfor %}
+        </address>
+    </div>
  </div>
 
  <div class="row">
     <div class="col-md-6">
         <address>
-            <strong>Street Address:</strong><br>{{ service_order.customer.street_address }}
+            <strong>Engineer:</strong><br>
+            {{ service_order.engineer }}
         </address>
     </div>
     <div class="col-md-6">
         <address>
-            <strong>Billing Address:</strong><br>{{ service_order.customer.billing_address }}
+            <strong>Charges:</strong><br>
+            Purchase Order: {{ service_order.charges.purchase_order }}<br>
+            Zone Charge: ${{ service_order.charges.zone_charge }}<br>
+            Parts Charge: ${{ service_order.charges.parts_charge }}<br>
+            Total Charges: ${{ service_order.charges.total_charge }}
         </address>
- </div>
-
- <div class="row">
-    <div class="col-md-12">Machine: {{ service_order.machine }}</div>
- </div>
-
- <div class="row">
-    <div class="col-md-12">Condition: {{ service_order.condition}}</div>
- </div>
-
- <div class="row">
-    <div class="col-md-12">Correction: {{ service_order.correction }}</div>
- </div>
-
- <div class="row">
-    <div class="col-md-12">Notes: {{ service_order.notes }}</div>
- </div>
-
- <div class="row">
-    <div class="col-md-12">Parts:
-    {% for part in service_order.parts.all %}
-        {{ part }}
-    {% endfor %}
     </div>
  </div>
 
  <div class="row">
-    <div class="col-md-6">Engineer: {{ service_order.engineer }}</div>
-    <div class="col-md-6">Total Charges: {{ service_order.charges }}</div>
+    <div class="col-md-6">
+        <address>
+            <strong>Payment Type:</strong><br>
+            {{ service_order.payment_category }}
+        </address>
+    </div>
+    <div class="col-md-6"><strong>Service:</strong> {{ service_order.service_category }}</div>
  </div>
 
- <div class="row">
-    <div class="col-md-6">Payment: {{ service_order.payment_category }}</div>
-    <div class="col-md-6">Service: {{ service_order.service_category }}</div>
- </div>
 {% endblock %}
