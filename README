@@ -11,8 +11,6 @@ Tracks the parts that are on hand.
 
 To do:
 
-- Put site on pythonanywhere.com
-- Clean up Service Order Report Page
 - Fix text boxes on login so you can see text.
 - Add forms to create new Service Order.
     - Make sure total charges are stored.
