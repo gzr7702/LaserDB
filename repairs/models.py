@@ -1,8 +1,5 @@
 from django.db import models
 from django.db.models.fields import IntegerField, CharField, TextField
-from Crypto.Random.random import choice
-from Cython.Shadow import NULL
-from gi.overrides.keysyms import blank
 import pprint
 
 class Machine(models.Model):
