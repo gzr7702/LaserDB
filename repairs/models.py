@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models.fields import IntegerField, CharField, TextField
 import pprint
+from decimal import Decimal
 
 class Machine(models.Model):
     serial_number = models.IntegerField(primary_key=True)
@@ -59,16 +60,6 @@ class Part(models.Model):
         item_string = '\t'.join(items)
         return item_string
     
-class Charge(models.Model):
-    purchase_order = models.IntegerField()
-    zone_charge = models.DecimalField(max_digits=9, decimal_places=2)
-    parts_charge = models.DecimalField(max_digits=9, decimal_places=2)
-    #take total out of admin since it's not a real total?
-    total_charge = models.DecimalField(null=True, blank=True, max_digits=9, decimal_places=2)
-
-    def __str__(self):
-        return str(self.purchase_order)
-    
 class ServiceLog(models.Model):
     rma_number = models.IntegerField(primary_key=True)
     date = models.DateField()
@@ -79,7 +70,11 @@ class ServiceLog(models.Model):
     notes = models.TextField(max_length=500)
     parts = models.ManyToManyField(Part)
     engineer = models.ForeignKey(ServiceEngineer)
-    charges = models.OneToOneField(Charge)
+    purchase_order = models.IntegerField(default=0)
+    zone_charge = models.DecimalField(max_digits=9, decimal_places=2, default=Decimal('0.0000'))
+    parts_charge = models.DecimalField(max_digits=9, decimal_places=2, default=Decimal('0.0000'))
+    #take total out of admin since it's not a real total and compute on input?
+    total_charge = models.DecimalField(null=True, blank=True, max_digits=9, decimal_places=2, default=Decimal('0.0000'))
     
     #this should be in the form model, no?================================
     
