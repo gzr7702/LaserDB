@@ -78,7 +78,7 @@ class ServiceLog(models.Model):
     correction = models.TextField(max_length=500)
     notes = models.TextField(max_length=500)
     parts = models.ManyToManyField(Part)
-    engineer = models.OneToOneField(ServiceEngineer)
+    engineer = models.ForeignKey(ServiceEngineer)
     charges = models.OneToOneField(Charge)
     
     #this should be in the form model, no?================================
