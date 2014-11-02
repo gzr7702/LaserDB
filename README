@@ -11,8 +11,13 @@ Tracks the parts that are on hand.
 
 To do:
 
-- Add forms to create new Service Order.
-    - Make sure total charges are stored.
+- Commit data to db from forms. Calculate total for prices.
+- Address form: be able to add new address. 
+- Info form: add engineer or choose from list
+- Parts form needs to be separated.
+- Purchases should display double digits as default
+- Machine form: date picker?
+
 - Add search for RMA, Part serial number, Engineer
 - Deal w/Dropdown on main page. For extra links
-- change logout/login/back buttons to be slightly different..
+- Change logout/login/back buttons to be slightly different.
