@@ -56,9 +56,10 @@ class Part(models.Model):
     quantity = models.IntegerField()
 
     def __str__(self):
-        items = [str(self.serial_number), str(self.part_number), str(self.price), str(self.quantity)]
-        item_string = '\t'.join(items)
-        return item_string
+
+        return "Serial Number " + str(self.serial_number) + " Number " + \
+            str(self.part_number) + " Price " + str(self.price) + \
+            " Quantity " + str(self.quantity)
     
 class ServiceLog(models.Model):
     rma_number = models.IntegerField(primary_key=True)
@@ -68,7 +69,7 @@ class ServiceLog(models.Model):
     condition = models.TextField(max_length=500) #condition/cause
     correction = models.TextField(max_length=500)
     notes = models.TextField(max_length=500)
-    parts = models.ManyToManyField(Part)
+    parts = models.OneToOneField(Part)
     engineer = models.ForeignKey(ServiceEngineer)
     purchase_order = models.IntegerField(default=0)
     zone_charge = models.DecimalField(max_digits=9, decimal_places=2, default=Decimal('0.0000'))

@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 def repair_home(request):
     service_list = ServiceLog.objects.all()
     context = {'service_list':service_list}
+    print(context)
     return render_to_response('repair.html', context)
 
 @login_required

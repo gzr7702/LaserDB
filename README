@@ -11,10 +11,10 @@ Tracks the parts that are on hand.
 
 To do:
 
-- Commit data to db from forms. Calculate total for prices.
+- Parts form needs to be separated.
 - Address form: be able to add new address. 
 - Info form: add engineer or choose from list
-- Parts form needs to be separated.
+- Commit data to db from forms. Calculate total for prices.
 - Purchases should display double digits as default
 - Machine form: date picker?
 
