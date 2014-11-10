@@ -1,16 +1,22 @@
 
 from django.contrib.formtools.wizard.views import SessionWizardView
 from django.shortcuts import render_to_response
-from .forms import InfoForm, CustomerForm, MachineForm, AssessmentForm
+from .forms import EngineerForm, InfoForm, CustomerForm, AddressForm, MachineForm, PartsForm, AssessmentForm
 
-FORMS = [("info", InfoForm),
+FORMS = [("engineer", EngineerForm),
+         ("info", InfoForm),
          ("customer", CustomerForm),
+         ("address", AddressForm),
          ("machine", MachineForm),
+         ("part", PartsForm),
          ("assessment", AssessmentForm)]
 
-TEMPLATES = {"info": "infoform.html",
+TEMPLATES = {"engineer": "engineerform.html",
+             "info": "infoform.html",
              "customer": "customerform.html",
+             "address": "addressform.html",
              "machine": "machineform.html",
+             "part": "partform.html",
              "assessment": "assessmentform.html"}
 
 class ServiceOrderWizard(SessionWizardView):
