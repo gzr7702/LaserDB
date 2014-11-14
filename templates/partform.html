@@ -8,6 +8,7 @@
         <table>
         {{ wizard.management_form }}
             {{ wizard.form }}
+        <a href=''>Add another</a>
         </table>
         {% if wizard.steps.prev %}
             <button name="wizard_goto_step" type="submit" value="{{ wizard.steps.first }}">{% trans "First Step" %}</button>

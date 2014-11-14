@@ -1,21 +1,16 @@
-from django.forms import ModelForm
+from django.forms import ModelForm, ModelMultipleChoiceField
 from repairs.models import ServiceLog, ServiceEngineer, Machine, Customer, Address, Part
+from django.forms.widgets import DateInput, Select 
+from django.forms.models import modelformset_factory
 
 class EngineerForm(ModelForm):
     class Meta:
         model = ServiceEngineer
 
-class InfoForm(ModelForm):
-    #rma, date
-    class Meta:
-        model = ServiceLog
-        fields = ['rma_number', 'date']
-
 class CustomerForm(ModelForm):
     #customer, addresses
     class Meta:
         model = Customer
-        fields = ['company_name', 'contact_name', 'email']
 
 class AddressForm(ModelForm):
     class Meta:
@@ -25,16 +20,18 @@ class MachineForm(ModelForm):
     #machine
     class Meta:
         model = Machine
-        fields = ['serial_number', 'model', 'manufacture_date', 'software_version', 'passwd', 'pulse_count']
+        widgets = {
+                   'manufacture_date': DateInput(attrs={'type':'date'}),
+                   }
         
 class PartsForm(ModelForm):
     class Meta:
-        model = Part
+        model = Address
 
-class AssessmentForm(ModelForm):
+class ServiceForm(ModelForm):
     #correction, notes, charges, payment category, service category, condition
     class Meta:
         model = ServiceLog
-        fields = ['correction', 'notes', 'purchase_order',\
-                  'zone_charge', 'parts_charge', 'payment_category',\
-                  'service_category', 'condition']
+        #fields = ['correction', 'notes', 'purchase_order',\
+        #          'zone_charge', 'parts_charge', 'payment_category',\
+        #          'service_category', 'condition']

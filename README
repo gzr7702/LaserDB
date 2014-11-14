@@ -8,16 +8,24 @@ Parts:
 
 Tracks the parts that are on hand.
 
+Using Python 3.4 and Django 1.7, and Bootstrap
 
 To do:
 
-- Parts form needs to be separated.
-- Address form: be able to add new address. 
-- Info form: add engineer or choose from list
+- Parts form: add more than one.
+- Address, engineer form: be able to choose existing
 - Commit data to db from forms. Calculate total for prices.
-- Purchases should display double digits as default
-- Machine form: date picker?
 
 - Add search for RMA, Part serial number, Engineer
 - Deal w/Dropdown on main page. For extra links
 - Change logout/login/back buttons to be slightly different.
+
+form data:
+
+[{'first_name': 'asdfasd', 'last_name': 'asdfasd'}, 
+{'date': datetime.date(2013, 10, 23), 'rma_number': 1341}, 
+{'company_name': 'asdf', 'contact_name': 'asdf', 'email': 'a@s.com'}, 
+{'state': 'Nebraska', 'phone': '2342356443', 'street': '22 North Pane Blvd', 'city': 'Rochco', 'zip': 123}, 
+{'model': 'sadf', 'serial_number': 123, 'pulse_count': 34, 'software_version': 234.0, 'manufacture_date': datetime.date(2044, 11, 23), 'passwd': '234'}, 
+{'quantity': 1, 'part_number': 1231, 'serial_number': 1231, 'price': Decimal('1.09')}, 
+{'payment_category': 'billable_repair', 'zone_charge': Decimal('0.00'), 'condition': 'asdf', 'notes': 'asdf', 'correction': 'asdfasd', 'purchase_order': 0, 'service_category': 'complaint', 'parts_charge': Decimal('0.00')}]
