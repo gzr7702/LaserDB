@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-from repairs.forms import EngineerForm, CustomerForm, MachineForm, AddressForm, PartsForm, ServiceForm
-from repairs.form_views import ServiceOrderWizard 
+from service_orders.forms import EngineerForm, CustomerForm, MachineForm, AddressForm, PartsForm, ServiceForm
+from service_orders.form_views import ServiceOrderWizard 
 
 urlpatterns = patterns('',
     # Examples:

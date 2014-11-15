@@ -1,5 +1,5 @@
 from django.forms import ModelForm, ModelMultipleChoiceField
-from repairs.models import ServiceLog, ServiceEngineer, Machine, Customer, Address, Part
+from service_orders.models import ServiceLog, ServiceEngineer, Machine, Customer, Address, Part
 from django.forms.widgets import DateInput, Select 
 from django.forms.models import modelformset_factory
 

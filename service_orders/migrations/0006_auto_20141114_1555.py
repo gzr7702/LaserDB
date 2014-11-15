@@ -7,13 +7,13 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('repairs', '0007_auto_20141018_1003'),
+        ('service_orders', '0005_auto_20141108_1415'),
     ]
 
     operations = [
         migrations.AlterField(
             model_name='servicelog',
-            name='engineer',
-            field=models.ForeignKey(to='repairs.ServiceEngineer'),
+            name='service_category',
+            field=models.CharField(choices=[('service', 'Service'), ('complaint', 'Complaint'), ('medical_device_report', 'Medical Device Report')], max_length=22),
         ),
     ]

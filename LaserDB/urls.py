@@ -3,8 +3,8 @@ from django.contrib import admin
 
 urlpatterns = patterns('',
     url(r'^$', 'LaserDB.views.home', name='home'),
-    url(r'^repairs/', include('repairs.urls')),
-    url(r'^parts/', include('parts.urls')),
+    url(r'^serviceorders/', include('service_orders.urls')),
+    url(r'^partsinventory/', include('parts_inventory.urls')),
     url(r'^admin/', include(admin.site.urls)),
     
     #user auth urls

@@ -39,8 +39,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.formtools',
-    'repairs',
-    'parts',
+    'service_orders',
+    'parts_inventory',
 )
 
 MIDDLEWARE_CLASSES = (

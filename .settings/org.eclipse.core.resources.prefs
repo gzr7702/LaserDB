@@ -1,2 +1,7 @@
 eclipse.preferences.version=1
-encoding//repairs/migrations/0001_initial.py=utf-8
+encoding//parts_inventory/migrations/0001_initial.py=utf-8
+encoding//service_orders/migrations/0001_initial.py=utf-8
+encoding//service_orders/migrations/0002_auto_20141107_0241.py=utf-8
+encoding//service_orders/migrations/0003_auto_20141108_0138.py=utf-8
+encoding//service_orders/migrations/0004_auto_20141108_0151.py=utf-8
+encoding//service_orders/migrations/0005_auto_20141108_1415.py=utf-8
