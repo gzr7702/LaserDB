@@ -12,5 +12,4 @@ urlpatterns = patterns('',
     url(r'machineform/$', 'service_orders.form_views.machine_form', name='machine_form'),
     url(r'partsform/$', 'service_orders.form_views.parts_form', name='parts_form'),
     url(r'^serviceform/$', ServiceOrderWizard.as_view(ServiceForm)),
-    #url(r'repair-form/$', 'repairs.views.repair_form', name='repair_form'),
 )

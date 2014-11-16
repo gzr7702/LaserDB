@@ -12,13 +12,8 @@ Using Python 3.4 and Django 1.7, and Bootstrap
 
 To do:
 
-- Parts form: add more than one.
-- Address, engineer form: be able to choose existing
-- Commit data to db from forms. Calculate total for prices.
-
+- create service order form using wizard.
 - Add search for RMA, Part serial number, Engineer
-- Deal w/Dropdown on main page. For extra links
-- Change logout/login/back buttons to be slightly different.
 
 form data:
 
