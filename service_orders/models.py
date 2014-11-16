@@ -38,9 +38,7 @@ class Customer(models.Model):
     billing_address = models.ForeignKey(Address, related_name='address_billing')
 
     def __str__(self):
-        items = [self.company_name, self.contact_name, self.email]
-        item_string = '\t'.join(items)
-        return item_string
+        return self.company_name
     
 class ServiceEngineer(models.Model):
     first_name = CharField(max_length=200)

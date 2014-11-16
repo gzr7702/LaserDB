@@ -1,27 +1,19 @@
 
 from django.contrib.formtools.wizard.views import SessionWizardView
 from django.shortcuts import render_to_response
-from .forms import EngineerForm, CustomerForm, AddressForm, MachineForm, PartsForm, ServiceForm
+from .forms import EngineerForm, CustomerForm, AddressForm, MachineForm, PartsForm, InfoForm, AssessmentForm, InvoiceForm
 from django.forms.models import ModelForm
 from django.template.context import RequestContext
 from cherrypy._cperror import HTTPRedirect
 from django.http.response import HttpResponseRedirect
 
-"""FORMS = [("engineer", EngineerForm),
-         ("info", InfoForm),
-         ("customer", CustomerForm),
-         ("address", AddressForm),
-         ("machine", MachineForm),
-         ("part", PartsForm),
-         ("assessment", AssessmentForm)]
-         """
+WIZARD_FORMS = [("info", InfoForm),
+         ("assessment", AssessmentForm),
+         ("invoice", InvoiceForm)]
 
-TEMPLATES = {"engineer": "engineerform.html",
-             "machine": "machineform.html",
-             "customer": "customerform.html",
-             "address": "addressform.html",
-             "part": "partform.html",
-             "service": "serviceform.html"}
+TEMPLATES = {"info": "infoform.html",
+             "assessment": "assessmentform.html",
+             "invoice": "invoiceform.html"}
 
 def engineer_form(request):
     form = EngineerForm(request.POST or None)
@@ -74,6 +66,6 @@ class ServiceOrderWizard(SessionWizardView):
 def process_form_data(form_list):
     form_data = [form.cleaned_data for form in form_list]
     print(form_data)
-    #write to db here
+    #calce price total and write to db here
     
     return form_data

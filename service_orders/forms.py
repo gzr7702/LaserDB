@@ -28,10 +28,17 @@ class PartsForm(ModelForm):
     class Meta:
         model = Part
 
-class ServiceForm(ModelForm):
-    #correction, notes, charges, payment category, service category, condition
+class InfoForm(ModelForm):
     class Meta:
         model = ServiceLog
-        #fields = ['correction', 'notes', 'purchase_order',\
-        #          'zone_charge', 'parts_charge', 'payment_category',\
-        #          'service_category', 'condition']
+        fields = ['engineer', 'rma_number', 'date', 'customer', 'machine', 'condition']
+
+class AssessmentForm(ModelForm):
+    class Meta:
+        model = ServiceLog
+        fields = ['correction', 'notes']
+
+class InvoiceForm(ModelForm):
+    class Meta:
+        model = ServiceLog
+        fields = ['parts', 'purchase_order', 'zone_charge', 'parts_charge', 'service_category']

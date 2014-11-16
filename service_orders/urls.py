@@ -1,7 +1,6 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-from service_orders.forms import ServiceForm
-from service_orders.form_views import ServiceOrderWizard 
+from service_orders.form_views import ServiceOrderWizard, WIZARD_FORMS
 
 urlpatterns = patterns('',
     url(r'^$', 'service_orders.views.home', name='service_order_home'),
@@ -11,5 +10,5 @@ urlpatterns = patterns('',
     url(r'addressform/$', 'service_orders.form_views.address_form', name='address_form'),
     url(r'machineform/$', 'service_orders.form_views.machine_form', name='machine_form'),
     url(r'partsform/$', 'service_orders.form_views.parts_form', name='parts_form'),
-    url(r'^serviceform/$', ServiceOrderWizard.as_view(ServiceForm)),
+    url(r'^serviceform/$', ServiceOrderWizard.as_view(WIZARD_FORMS)),
 )
