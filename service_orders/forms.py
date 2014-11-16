@@ -26,7 +26,7 @@ class MachineForm(ModelForm):
         
 class PartsForm(ModelForm):
     class Meta:
-        model = Address
+        model = Part
 
 class ServiceForm(ModelForm):
     #correction, notes, charges, payment category, service category, condition

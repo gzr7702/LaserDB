@@ -1,4 +1,4 @@
-from parts.models import Part
+from parts_inventory.models import Part
 from django.shortcuts import render, render_to_response
 from django.contrib.auth.decorators import login_required
 
