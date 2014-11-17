@@ -3,17 +3,32 @@
 
 
 {% block content %}
-    <h2>Info</h2>
+    <h2>Initial Info</h2>
     <form action="" method="post">{% csrf_token %}
-        <table>
-        <a href=''>add new engineer</a>
+
         {{ wizard.management_form }}
-            {{ wizard.form }}
-        </table>
-        {% if wizard.steps.prev %}
-            <button name="wizard_goto_step" type="submit" value="{{ wizard.steps.first }}">{% trans "First Step" %}</button>
-            <button name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">{% trans "Back" %}</button>
-        {% endif %}
-        <input type="submit" value="{% trans "submit" %}"/>
+            <div class="row">
+                <div class="col-md-1">{{ wizard.form.engineer.label }}</div>
+                <div class="col-md-5">{{ wizard.form.engineer }}</div>
+                <div class="col-md-1">{{ wizard.form.rma_number.label }}</div>
+                <div class="col-md-5">{{ wizard.form.rma_number }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-1">{{ wizard.form.date.label }}</div>
+                <div class="col-md-5">{{ wizard.form.date }}</div>
+                <div class="col-md-1">{{ wizard.form.customer.label }}</div>
+                <div class="col-md-5">{{ wizard.form.customer }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-1">{{ wizard.form.machine.label }}</div>
+                <div class="col-md-5">{{ wizard.form.machine }}</div>
+                <div class="col-md-1">{{ wizard.form.condition.label }}</div>
+                <div class="col-md-5">{{ wizard.form.condition }}</div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-2 col-md-offset-10"><input type="submit" value="{% trans "submit" %}"/></div>
+            </div>
     </form>
+
 {% endblock %}

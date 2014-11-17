@@ -12,11 +12,8 @@ class Machine(models.Model):
     pulse_count = models.IntegerField()
     
     def __str__(self):
-        items = [str(self.serial_number), self.model, str(self.manufacture_date),\
-                 str(self.software_version), self.passwd, str(self.pulse_count)]
-        item_string = '\t'.join(items)
-        return item_string
-    
+        return self.model + " " + str(self.serial_number)
+
 class Address(models.Model):
     street = models.CharField(max_length=200)
     city = models.CharField(max_length=200)
@@ -54,9 +51,7 @@ class Part(models.Model):
     quantity = models.IntegerField()
 
     def __str__(self):
-        return "Serial Number " + str(self.serial_number) + " Number " + \
-            str(self.part_number) + " Price " + str(self.price) + \
-            " Quantity " + str(self.quantity)
+        return str(self.serial_number)
     
 class ServiceLog(models.Model):
     rma_number = models.IntegerField(primary_key=True)

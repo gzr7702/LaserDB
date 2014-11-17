@@ -5,15 +5,32 @@
 {% block content %}
     <h2>Info</h2>
     <form action="" method="post">{% csrf_token %}
-        <table>
-        <a href=''>add new engineer</a>
-        {{ wizard.management_form }}
-            {{ wizard.form }}
-        </table>
-        {% if wizard.steps.prev %}
-            <button name="wizard_goto_step" type="submit" value="{{ wizard.steps.first }}">{% trans "First Step" %}</button>
-            <button name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">{% trans "Back" %}</button>
-        {% endif %}
-        <input type="submit" value="{% trans "submit" %}"/>
+    {{ wizard.management_form }}
+        <div class="row">
+            <div class="col-md-2">{{ wizard.form.parts.label }}</div>
+            <div class="col-md-4">{{ wizard.form.parts }}</div>
+            <div class="col-md-2">{{ wizard.form.purchase_order.label }}</div>
+            <div class="col-md-4">{{ wizard.form.purchase_order }}</div>
+        <div class="row">
+            <div class="col-md-2">{{ wizard.form.zone_charge.label }}</div>
+            <div class="col-md-4">{{ wizard.form.zone_charge }}</div>
+            <div class="col-md-2">{{ wizard.form.parts_charge.label }}</div>
+            <div class="col-md-4">{{ wizard.form.parts_charge }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">{{ wizard.form.service_category.label }}</div>
+            <div class="col-md-2">{{ wizard.form.service_category }}</div>
+        </div>
+            {% if wizard.steps.prev %}
+                <div class="row">
+                    <div class="col-md-1"><button name="wizard_goto_step" type="submit" value="{{ wizard.steps.first }}">{% trans "First" %}</button></div>
+                    <div class="col-md-1"><button name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">{% trans "Back" %}</button></div>
+                    <div class="col-md-1"><input type="submit" value="{% trans "submit" %}"/></div>
+                </div>
+            {% else %}
+                <div class="row">
+                    <div class="col-md-1"><input type="submit" value="{% trans "submit" %}"/></div>
+                </div>
+            {% endif %}
     </form>
 {% endblock %}

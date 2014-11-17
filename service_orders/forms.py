@@ -32,6 +32,7 @@ class InfoForm(ModelForm):
     class Meta:
         model = ServiceLog
         fields = ['engineer', 'rma_number', 'date', 'customer', 'machine', 'condition']
+        widgets = { 'date': DateInput(attrs={'type':'date'}),}
 
 class AssessmentForm(ModelForm):
     class Meta:
