@@ -6,20 +6,24 @@ from django.forms.models import modelformset_factory
 class EngineerForm(ModelForm):
     class Meta:
         model = ServiceEngineer
+        fields = "__all__"
 
 class CustomerForm(ModelForm):
     #customer, addresses
     class Meta:
         model = Customer
+        fields = "__all__"
 
 class AddressForm(ModelForm):
     class Meta:
         model = Address
+        fields = "__all__"
 
 class MachineForm(ModelForm):
     #machine
     class Meta:
         model = Machine
+        fields = "__all__"
         widgets = {
                    'manufacture_date': DateInput(attrs={'type':'date'}),
                    }
@@ -27,6 +31,7 @@ class MachineForm(ModelForm):
 class PartsForm(ModelForm):
     class Meta:
         model = Part
+        fields = "__all__"
 
 class InfoForm(ModelForm):
     class Meta:
@@ -42,4 +47,10 @@ class AssessmentForm(ModelForm):
 class InvoiceForm(ModelForm):
     class Meta:
         model = ServiceLog
-        fields = ['parts', 'purchase_order', 'zone_charge', 'parts_charge', 'service_category']
+        fields = ['parts', 'purchase_order', 'zone_charge', 'parts_charge',\
+                  'payment_category', 'service_category']
+
+class ConfirmationForm(ModelForm):
+    class Meta:
+        model = ServiceLog
+        fields = "__all__"

@@ -7,7 +7,7 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('repairs', '0003_auto_20141108_0138'),
+        ('service_orders', '0003_auto_20141108_0138'),
     ]
 
     operations = [
@@ -42,7 +42,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='servicelog',
             name='parts',
-            field=models.OneToOneField(null=True, to='repairs.Part'),
+            field=models.OneToOneField(null=True, to='service_orders.Part'),
             preserve_default=True,
         ),
         migrations.AlterField(

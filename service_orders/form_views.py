@@ -1,19 +1,21 @@
 
 from django.contrib.formtools.wizard.views import SessionWizardView
 from django.shortcuts import render_to_response
-from .forms import EngineerForm, CustomerForm, AddressForm, MachineForm, PartsForm, InfoForm, AssessmentForm, InvoiceForm
+from .forms import EngineerForm, CustomerForm, AddressForm, MachineForm, PartsForm, InfoForm, AssessmentForm, InvoiceForm, ConfirmationForm
+from .models import ServiceLog
 from django.forms.models import ModelForm
 from django.template.context import RequestContext
-from cherrypy._cperror import HTTPRedirect
 from django.http.response import HttpResponseRedirect
 
 WIZARD_FORMS = [("info", InfoForm),
          ("assessment", AssessmentForm),
-         ("invoice", InvoiceForm)]
+         ("invoice", InvoiceForm),
+         ("confirmation", ConfirmationForm)]
 
 TEMPLATES = {"info": "infoform.html",
              "assessment": "assessmentform.html",
-             "invoice": "invoiceform.html"}
+             "invoice": "invoiceform.html",
+             "confirmation": "confirmationform.html"}
 
 def engineer_form(request):
     form = EngineerForm(request.POST or None)
@@ -55,17 +57,21 @@ def parts_form(request):
         return HttpResponseRedirect('')
     return render_to_response('partsform.html', locals(), context_instance=RequestContext(request))
 
+def process_form_data(form_list):
+    instance = ServiceLog()
+    for form in form_list:
+        for field, value in form.cleaned_data.items():
+            setattr(instance, field, value)
+    instance.save()
+
 class ServiceOrderWizard(SessionWizardView):
     def get_template_names(self):
+        #import pdb; pdb.set_trace()
+        print(TEMPLATES[self.steps.current])
         return [TEMPLATES[self.steps.current]]
 
     def done(self, form_list, **kwargs):
+        print("in done ---------------------")
         process_form_data(form_list)
-        return render_to_response('done.html')
+        return HttpResponseRedirect('done.html')
     
-def process_form_data(form_list):
-    form_data = [form.cleaned_data for form in form_list]
-    print(form_data)
-    #calce price total and write to db here
-    
-    return form_data

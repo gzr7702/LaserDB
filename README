@@ -12,8 +12,8 @@ Using Python 3.4 and Django 1.7, and Bootstrap
 
 To do:
 
-- Add verbage to parts model
-- complete service order form.
+- complete service order form on submit.
+- Add name field to parts model
 - Add search for RMA, Part serial number, Engineer
 - Add grid to home, engineer, customer, address, machine, parts pages
 - Add links to add extra customer, machines, and parts
