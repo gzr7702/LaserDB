@@ -7,7 +7,7 @@
 
     <ul>
     {% for svc in service_list %}
-    <li><a href="individualreport/{{ svc.rma_number }}">{{ svc.rma_number }}</a></li>
+    <div class="row"><div class="col-md-2"><a href="individualreport/{{ svc.rma_number }}">{{ svc.rma_number }}</a></div></div>
     {% endfor %}
     </ul>
     

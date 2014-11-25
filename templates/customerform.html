@@ -5,7 +5,28 @@
 {% block content %}
     <h2>Add Customer Info</h2>
     <form action="." method="post">{% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="{% trans "submit" %}"/>
+         <div class="row">
+            <div class="col-md-2 col-md-offset-2">{{ form.company_name.label}}</div>
+            <div class="col-md-2">{{ form.company_name }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 col-md-offset-2">{{ form.contact_name.label}}</div>
+            <div class="col-md-2">{{ form.contact_name }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 col-md-offset-2">{{ form.email.label}}</div>
+            <div class="col-md-2">{{ form.email }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 col-md-offset-2">{{ form.street_address.label}}</div>
+            <div class="col-md-2">{{ form.street_address }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 col-md-offset-2">{{ form.billing_address.label}}</div>
+            <div class="col-md-2">{{ form.billing_address }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 col-md-offset-4"><input type="submit" value="{% trans "submit" %}"/></div>
+        </div>
     </form>
 {% endblock %}

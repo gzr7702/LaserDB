@@ -4,8 +4,33 @@
 
 {% block content %}
     <h2>Enter Machine Info</h2>
-    <form action="" method="post">{% csrf_token %}
-    {{ form.as_p }}
-        <input type="submit" value="{% trans "submit" %}"/>
+<form action="." method="post">{% csrf_token %}
+         <div class="row">
+            <div class="col-md-2">{{ form.serial_number.label}}</div>
+            <div class="col-md-2">{{ form.serial_number }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">{{ form.model.label}}</div>
+            <div class="col-md-2">{{ form.model }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">{{ form.manufacture_date.label}}</div>
+            <div class="col-md-2">{{ form.manufacture_date}}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">{{ form.software_version.label}}</div>
+            <div class="col-md-2">{{ form.software_version }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">{{ form.passwd.label}}</div>
+            <div class="col-md-2">{{ form.passwd}}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">{{ form.pulse_count.label}}</div>
+            <div class="col-md-2">{{ form.pulse_count }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 col-md-offset-5"><input type="submit" value="{% trans "submit" %}"/></div>
+        </div>
     </form>
 {% endblock %}

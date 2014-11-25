@@ -4,8 +4,29 @@
 
 {% block content %}
     <h2>Enter Address Info</h2>
-    <form action="" method="post">{% csrf_token %}
-       {{ form.as_p }}
-        <input type="submit" value="{% trans "submit" %}"/> 
+    <form action="." method="post">{% csrf_token %}
+        <div class="row">
+            <div class="col-md-2">{{ form.street.label }}</div>
+            <div class="col-md-2">{{ form.street }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">{{ form.city.label }}</div>
+            <div class="col-md-2">{{ form.city }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">{{ form.state.label }}</div>
+            <div class="col-md-2">{{ form.state }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">{{ form.zip.label }}</div>
+            <div class="col-md-2">{{ form.zip }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">{{ form.phone.label }}</div>
+            <div class="col-md-2">{{ form.phone }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 col-md-offset-5"><input type="submit" value="{% trans "submit" %}"/></div>
+        </div>
     </form>
 {% endblock %}

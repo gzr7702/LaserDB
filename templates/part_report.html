@@ -5,9 +5,11 @@
 
 {% block content %}
 
-    <h3>Serial Number</h3>{{ part.serial_number }}
-    <h3>Part Number</h3>{{ part.part_number }}
-    <h3>Price </h3>${{ part.price }}
-    <h3>Location </h3>{{ part.location }}
+    <div class="row"><div class="col-md-4 col-md-offset-4"><h2>Parts Report</h2></div></div>
+    <hr>
+    <div class="row"><div class="col-md-3"><p>Serial Number</p></div><div class="col-md-2">{{ part.serial_number }}</div></div>
+    <div class="row"><div class="col-md-3"><p>Part Number</p></div><div class="col-md-2">{{ part.part_number }}</div></div>
+    <div class="row"><div class="col-md-3"><p>Price</p></div><div class="col-md-2">${{ part.price }}</div></div>
+    <div class="row"><div class="col-md-3"><p>Location </p></div><div class="col-md-2">{{ part.location }}</div></div>
 
 {% endblock %}

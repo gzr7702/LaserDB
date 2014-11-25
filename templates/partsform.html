@@ -4,8 +4,25 @@
 
 {% block content %}
     <h2>Enter Parts Info</h2>
-    <form action="" method="post">{% csrf_token %}
-        {{ form.as_p }}
-            <input type="submit" value="{% trans "submit" %}"/>
+<form action="." method="post">{% csrf_token %}
+         <div class="row">
+            <div class="col-md-2">{{ form.serial_number.label}}</div>
+            <div class="col-md-2">{{ form.serial_number }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">{{ form.part_number.label}}</div>
+            <div class="col-md-2">{{ form.part_number }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">{{ form.price.label}}</div>
+            <div class="col-md-2">{{ form.price }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">{{ form.quantity.label}}</div>
+            <div class="col-md-2">{{ form.quantity }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 col-md-offset-4"><input type="submit" value="{% trans "submit" %}"/></div>
+        </div>
     </form>
 {% endblock %}

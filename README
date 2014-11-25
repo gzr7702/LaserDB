@@ -16,7 +16,7 @@ To do:
 - Add name field to parts model
 - Add search for RMA, Part serial number, Engineer
 - Add grid to home, engineer, customer, address, machine, parts pages
-- Add links to add extra customer, machines, and parts
+- Add links to add extra customer, machines, addresses, and parts
 
 form data:
 

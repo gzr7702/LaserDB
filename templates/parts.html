@@ -3,12 +3,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Parts</h1>
+    <h2>Parts</h2>
 
-    <ul>
         {% for part in parts_list %}
-            <li><a href="parts-report/{{ part.serial_number }}">{{ part.serial_number }}</a></li>
+            <div class="row"><div class="col-md-2 col-md-offset-2"><a href="parts-report/{{ part.serial_number }}">{{ part.serial_number }}</a></div></div>
         {% endfor %}
-    </ul>
     
 {% endblock %}
