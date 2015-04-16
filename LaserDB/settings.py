@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.formtools',
+    'haystack',
     'service_orders',
     'parts_inventory',
 )
@@ -87,3 +88,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = '/home/gzr7702/LaserDB/static'
+
+HAYSTACK_CONNECTIONS = {
+                        'default': {
+                                    'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+                                    'PATH': os.path.join(os.path.dirname(__file__), 'whoosh_index'),
+                        },
+}

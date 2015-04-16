@@ -1,6 +1,6 @@
 from django.forms import ModelForm, ModelMultipleChoiceField
 from service_orders.models import ServiceLog, ServiceEngineer, Machine, Customer, Address, Part
-from django.forms.widgets import DateInput, Select 
+from django.forms.widgets import DateInput, Select, TextInput
 from django.forms.models import modelformset_factory
 
 class EngineerForm(ModelForm):
@@ -49,6 +49,7 @@ class InvoiceForm(ModelForm):
         model = ServiceLog
         fields = ['parts', 'purchase_order', 'zone_charge', 'parts_charge',\
                   'payment_category', 'service_category']
+        widgets = { 'parts': TextInput,}
 
 class ConfirmationForm(ModelForm):
     class Meta:

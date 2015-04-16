@@ -4,8 +4,11 @@
 
 {% block content %}
     <h2>Invoice</h2>
-    <form action="" method="POST">{% csrf_token %}
+    <form action="" method="post">{% csrf_token %}
     {{ wizard.management_form }}
+    
+    {{ wizard.form.non_field_errors }}
+    {{ wizard.form.errors }}
         <div class="row">
             <div class="col-md-2">{{ wizard.form.parts.label }}</div>
             <div class="col-md-4">{{ wizard.form.parts }}</div>
@@ -26,8 +29,12 @@
         </div>
             {% if wizard.steps.prev %}
                 <div class="row">
-                    <div class="col-md-1"><button name="wizard_goto_step" type="submit" value="{{ wizard.steps.first }}">{% trans "First" %}</button></div>
-                    <div class="col-md-1"><button name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">{% trans "Back" %}</button></div>
+                    <div class="col-md-1">
+                        <button name="wizard_goto_step" type="submit" value="{{ wizard.steps.first }}">{% trans "First" %}</button>
+                    </div>
+                    <div class="col-md-1">
+                        <button name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">{% trans "Back" %}</button>
+                    </div>
                     <div class="col-md-1"><input type="submit" value="{% trans "submit" %}"/></div>
                 </div>
             {% else %}
