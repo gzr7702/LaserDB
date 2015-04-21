@@ -1,0 +1,56 @@
+[
+{
+  "fields": {
+    "groups": [],
+    "username": "rob",
+    "email": "robdevelop@earthlink.net",
+    "is_staff": true,
+    "date_joined": "2014-10-17T00:40:35.912Z",
+    "is_superuser": true,
+    "first_name": "",
+    "last_name": "",
+    "is_active": true,
+    "user_permissions": [],
+    "last_login": "2015-04-16T22:13:54.307Z",
+    "password": "pbkdf2_sha256$12000$Pu4CDJlDDhTB$9Ae6zOPdETiFaZFZcEde24aDAYuQ6mVe4pn3Mfz0Zu8="
+  },
+  "pk": 1,
+  "model": "auth.user"
+},
+{
+  "fields": {
+    "groups": [],
+    "username": "broseph",
+    "email": "BB@hotmail.com",
+    "is_staff": true,
+    "date_joined": "2014-10-28T22:44:08Z",
+    "is_superuser": true,
+    "first_name": "Bro",
+    "last_name": "Broman",
+    "is_active": true,
+    "user_permissions": [],
+    "last_login": "2014-10-28T22:45:32Z",
+    "password": "pbkdf2_sha256$12000$0wEDUUlhuwiF$+UIGmO90Tm2ErDmMAAj0s2K4L/qfWq8oHu+piEABAAM="
+  },
+  "pk": 2,
+  "model": "auth.user"
+},
+{
+  "fields": {
+    "groups": [],
+    "username": "jdaniele",
+    "email": "JD@hotmail.com",
+    "is_staff": true,
+    "date_joined": "2014-10-28T22:46:21Z",
+    "is_superuser": true,
+    "first_name": "JD",
+    "last_name": "JD",
+    "is_active": true,
+    "user_permissions": [],
+    "last_login": "2014-10-28T22:46:21Z",
+    "password": "pbkdf2_sha256$12000$YHEk4UxfhF6h$P3DyUbrZcJc9baMT0Waq2MiCkBjaauIGpR4/BvhUZag="
+  },
+  "pk": 3,
+  "model": "auth.user"
+}
+]

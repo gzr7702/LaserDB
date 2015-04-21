@@ -61,6 +61,7 @@ class ServiceLog(models.Model):
     condition = models.TextField(max_length=500) #condition/cause
     correction = models.TextField(max_length=500)
     notes = models.TextField(max_length=500)
+    #make this one to many?
     parts = models.OneToOneField(Part)
     engineer = models.ForeignKey(ServiceEngineer)
     purchase_order = models.IntegerField(default=0)
