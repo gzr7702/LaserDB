@@ -46,8 +46,11 @@ class SOTestCase(LiveServerTestCase):
 
 		self.browser.get('%s%s' % (self.live_server_url, '/serviceorders/serviceform/'))
 
-		engineer_field = Select(self.browser.find_element_by_id('id_info-engineer'))
-		engineer_field.select_by_value("JD JD")
+		#engineer_field = Select(self.browser.find_element_by_id('id_info-engineer'))
+		#engineer_field.select_by_value("1")
+		all_options = self.browser.find_element_by_tag_name("select")
+		for option in all_options:
+			print(option)
 
 		print("at SO form")
 

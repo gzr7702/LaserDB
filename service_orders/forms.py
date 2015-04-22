@@ -46,10 +46,10 @@ class AssessmentForm(ModelForm):
 
 class InvoiceForm(ModelForm):
     class Meta:
+        #how do we pass the parts model in here?
         model = ServiceLog
         fields = ['parts', 'purchase_order', 'zone_charge', 'parts_charge',\
                   'payment_category', 'service_category']
-        widgets = { 'parts': TextInput,}
 
 class ConfirmationForm(ModelForm):
     class Meta:

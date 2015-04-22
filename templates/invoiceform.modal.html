@@ -14,7 +14,8 @@
             <div class="col-md-2">{{ wizard.form.parts.label }}</div>
             <div class="col-md-2">{{ wizard.form.parts }}</div>
             <div class="col-md-2">
-                    <button type="button" class="newWindow" href="/serviceorders/partsform/">add</button>
+                    <button type="button" data-toggle="modal" href="#partsModal">add</button>
+                    {% include "addpart.html" %}
             </div>
             <div class="col-md-2">{{ wizard.form.purchase_order.label }}</div>
             <div class="col-md-4">{{ wizard.form.purchase_order }}</div>
