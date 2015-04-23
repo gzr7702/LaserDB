@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models.fields import IntegerField, CharField, TextField
 import pprint
+from parts_inventory.models import Part
 from decimal import Decimal
 
 class Machine(models.Model):
@@ -44,15 +45,6 @@ class ServiceEngineer(models.Model):
     def __str__(self):
         return self.first_name + ' ' + self.last_name
 
-class Part(models.Model):
-    serial_number = models.IntegerField(primary_key=True)
-    part_number = models.IntegerField()
-    price = models.DecimalField(max_digits=9, decimal_places=2)
-    quantity = models.IntegerField()
-
-    def __str__(self):
-        return str(self.serial_number)
-    
 class ServiceLog(models.Model):
     rma_number = models.IntegerField(primary_key=True)
     date = models.DateField()

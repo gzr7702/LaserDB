@@ -13,6 +13,7 @@ Using Python 3.4 and Django 1.7, and Bootstrap
 To do:
 
 - complete service order form on submit.
+- add error message for bad forms
 - Add name field to parts model
 - Add search for RMA, Part serial number, Engineer
 - Add grid to home, engineer, customer, address, machine, parts pages

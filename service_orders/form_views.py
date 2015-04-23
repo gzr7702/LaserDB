@@ -57,6 +57,14 @@ def parts_form(request):
         return HttpResponseRedirect('')
     return render_to_response('partsform.html', locals(), context_instance=RequestContext(request))
 
+def add_parts_form(request):
+    form = PartsForm(request.POST or None)
+    if form.is_valid():
+        save_form = form.save(commit=False)
+        save_form.save()
+        return HttpResponseRedirect('')
+    return render_to_response('addpart.html', locals(), context_instance=RequestContext(request))
+
 def process_form_data(form_list):
     instance = ServiceLog()
     for form in form_list:
