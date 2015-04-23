@@ -1,5 +1,6 @@
 from django.forms import ModelForm, ModelMultipleChoiceField
 from service_orders.models import ServiceLog, ServiceEngineer, Machine, Customer, Address, Part
+from parts_inventory.models import Part
 from django.forms.widgets import DateInput, Select, TextInput
 from django.forms.models import modelformset_factory
 

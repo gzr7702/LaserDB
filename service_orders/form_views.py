@@ -58,6 +58,7 @@ def parts_form(request):
     return render_to_response('partsform.html', locals(), context_instance=RequestContext(request))
 
 def add_parts_form(request):
+    """Add parts from the Service Order page"""
     form = PartsForm(request.POST or None)
     if form.is_valid():
         save_form = form.save(commit=False)
