@@ -12,10 +12,7 @@
     {{ wizard.form.errors }}
         <div class="row">
             <div class="col-md-2">{{ wizard.form.parts.label }}</div>
-            <div class="col-md-2">{{ wizard.form.parts }}</div>
-            <div class="col-md-2">
-                    <button type="button" data-toggle="modal" data-remote="{% url 'add_parts_form' %}">add</button>
-            </div>
+            <div class="col-md-4">{{ wizard.form.parts }}</div>
             <div class="col-md-2">{{ wizard.form.purchase_order.label }}</div>
             <div class="col-md-4">{{ wizard.form.purchase_order }}</div>
         </div>

@@ -41,7 +41,6 @@ INSTALLED_APPS = (
     'django.contrib.formtools',
     'haystack',
     'service_orders',
-    'parts_inventory',
 )
 
 MIDDLEWARE_CLASSES = (

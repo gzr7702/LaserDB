@@ -1,23 +1,23 @@
 The Laser Database
 
-Repairs:
+Service Orders:
 
 This is a database to track the Service Order forms completed in the field by engineers
-
-Parts:
-
-Tracks the parts that are on hand.
+as well as parts that they use.
 
 Using Python 3.4 and Django 1.7, and Bootstrap
 
 To do:
 
-- complete service order form on submit.
+- change SO form to only display unused parts
+- Display of SO's not showing parts
 - add error message for bad forms
-- Add name field to parts model
+- Notes field on Info form should not be required
 - Add search for RMA, Part serial number, Engineer
-- Add grid to home, engineer, customer, address, machine, parts pages
-- Add links to add extra customer, machines, addresses, and parts from the larger forms
+- Add links to add extra customer, machines, addresses, and parts from the larger forms?
+- Add name field to parts model?
+- Complete Testing
+- Add API
 
 form data:
 
