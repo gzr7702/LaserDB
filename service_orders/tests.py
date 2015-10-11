@@ -1,56 +1,40 @@
-from django.test import LiveServerTestCase
+from django.test import TestCase
+from unittest import skip
+from .models import Machine, ServiceEngineer
+from datetime import date
 
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support.ui import Select
-
-class SOTestCase(LiveServerTestCase):
+class UnitTests(TestCase):
 	def setUp(self):
-		self.browser = webdriver.Firefox()
-		self.browser.implicitly_wait(3)
+		pass
 
 	def tearDown(self):
-		self.browser.quit()
+		pass
 
-	def test_we_can_reach_front_page_and_login(self):
-		self.browser.get('%s%s' % (self.live_server_url, '/'))
-		self.assertTrue("LaserCo", self.browser.title)
+	def test_can_input_and_retrieve_machine_data(self):
+		machine_data = {
+			'serial_number': 12345,
+	    	'model': "The Bearfield",
+	    	'manufacture_date': date(2014, 9, 20),
+	    	'software_version': 2.25,
+	    	'passwd': "Frobnosticator",
+	    	'pulse_count': 223
+    	}
 
-		header = self.browser.find_element_by_tag_name('h1')
-		self.assertIn('Login', header.text)
+		Machine.objects.create(**machine_data)
+		retreived_machine = Machine.objects.get(serial_number=machine_data['serial_number'])
+		
+		self.assertEqual(retreived_machine.serial_number, machine_data['serial_number'], "Searial numbers didn't match!")
 
-		username_field = self.browser.find_element_by_name('username')
-		username_field.send_keys('rob')
 
-		password_field = self.browser.find_element_by_name('password')
-		password_field.send_keys('CoffeeHouse')
-		password_field.send_keys(Keys.RETURN)
+	#@skip("skipping for now")
+	def test_can_input_and_retrieve_service_engineer_data(self):
+		name = {
+			'first_name': 'Rob',
+			'last_name': 'Smith'
+		}
 
-		self.browser.get('%s%s' % (self.live_server_url, '/accounts/loggedin/'))
-		continue_button = self.browser.find_element_by_tag_name('input').click()
-		print("Able to login")
+		ServiceEngineer.objects.create(**name)
+		retreived_engineer = ServiceEngineer.objects.get(last_name=name['last_name'])
 
-	def test_serviceform(self):
-		print("test_serviceform")
-		self.browser.get('%s%s' % (self.live_server_url, '/'))
-
-		username_field = self.browser.find_element_by_name('username')
-		username_field.send_keys('rob')
-
-		password_field = self.browser.find_element_by_name('password')
-		password_field.send_keys('CoffeeHouse')
-		password_field.send_keys(Keys.RETURN)
-		self.browser.get('%s%s' % (self.live_server_url, '/accounts/loggedin/'))
-		continue_button = self.browser.find_element_by_tag_name('input').click()
-		print("Able to login again")
-
-		self.browser.get('%s%s' % (self.live_server_url, '/serviceorders/serviceform/'))
-
-		#engineer_field = Select(self.browser.find_element_by_id('id_info-engineer'))
-		#engineer_field.select_by_value("1")
-		all_options = self.browser.find_element_by_tag_name("select")
-		for option in all_options:
-			print(option)
-
-		print("at SO form")
-
+		self.assertEqual(retreived_engineer.first_name, name['first_name'], "First Names didn't match!")
+		self.assertEqual(retreived_engineer.last_name, name['last_name'], "Last names didn't match!")
