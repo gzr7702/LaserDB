@@ -58,7 +58,11 @@ class UnitTests(TestCase):
 
 	def create_customer(self):
 		""" Helper function to create customer object """
-		pass
+		customer_data = self.customer_data
+		customer_data['street_address'] = Address.objects.create(**self.address_data)
+		customer_data['billing_address'] = Address.objects.create(**self.address_data)
+
+		return customer_data
 
 	def test_can_input_and_retrieve_machine_data(self):
 		Machine.objects.create(**self.machine_data)
@@ -82,9 +86,7 @@ class UnitTests(TestCase):
 
 	def test_can_input_and_retrieve_customer_data(self):
 		# We copy the customer date and add 2 Address objects
-		customer_data = self.customer_data
-		customer_data['street_address'] = Address.objects.create(**self.address_data)
-		customer_data['billing_address'] = Address.objects.create(**self.address_data)
+		customer_data = self.create_customer()
 
 		new_customer = Customer.objects.create(**customer_data)
 		retreived_customer = Customer.objects.get(id=new_customer.id)
