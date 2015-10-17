@@ -37,7 +37,7 @@ class UnitTests(TestCase):
 		self.part_data = {
 			'serial_number': 12345,
 			'part_number': 99999,
-			'price': Decimal(9.99),
+			'price': Decimal("9.99"),
 			'location': 'Long Island',
 			'used': True,
 		}
@@ -49,8 +49,8 @@ class UnitTests(TestCase):
 			'correction': 'Fixeded it',
 			'notes': 'This is customer has no idea how to treat an expensive laser.',
 			'purchase_order': 66666,
-			'zone_charge': Decimal(7.77),
-			'parts_charge': Decimal(8.95),
+			'zone_charge': Decimal("7.77"),
+			'parts_charge': Decimal("8.95"),
 		}
 
 	def tearDown(self):
@@ -114,7 +114,6 @@ class UnitTests(TestCase):
 		self.assertEqual(retreived_part.location, self.part_data['location'], "location didn't match!")
 		self.assertEqual(retreived_part.used, self.part_data['used'], "used didn't match!")
 
-	@skip("price not working")
 	def test_can_input_and_retrieve_service_order_data(self):
 		# We copy the service order data and add foriegn keys
 		service_order = self.service_order_data
@@ -145,9 +144,8 @@ class UnitTests(TestCase):
 		self.assertEqual(retreived_service_log.correction, service_order['correction'], "correction didn't match!")
 		self.assertEqual(retreived_service_log.notes, service_order['notes'], "notes didn't match!")
 		self.assertEqual(retreived_service_log.purchase_order, service_order['purchase_order'], "purchase_order didn't match!")
-		#Decimal bug;
-		#self.assertEqual(retreived_service_log.zone_charge, service_order['zone_charge'], "zone_charge didn't match!")
-		#self.assertEqual(retreived_service_log.parts_charge, service_order['parts_charge'], "parts_charge didn't match!")
+		self.assertEqual(retreived_service_log.zone_charge, service_order['zone_charge'], "zone_charge didn't match!")
+		self.assertEqual(retreived_service_log.parts_charge, service_order['parts_charge'], "parts_charge didn't match!")
 		self.assertEqual(retreived_service_log.customer, service_order['customer'], "customer didn't match!")
 		self.assertEqual(retreived_service_log.machine, service_order['machine'], "machine didn't match!")
 		self.assertEqual(retreived_service_log.engineer, service_order['engineer'], "engineer didn't match!")
