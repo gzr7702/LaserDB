@@ -46,7 +46,7 @@ class UnitTests(TestCase):
 			'rma_number': 54321,
 			'date': date(2015, 10, 13),
 			'condition': 'It was broked',
-			'correction': 'Fixed it',
+			'correction': 'Fixeded it',
 			'notes': 'This is customer has no idea how to treat an expensive laser.',
 			'purchase_order': 66666,
 			'zone_charge': Decimal(7.77),
@@ -57,7 +57,7 @@ class UnitTests(TestCase):
 		pass
 
 	def create_customer(self):
-		""" Helper function to create customer object """
+		""" Function to help create customer object by addeing addresses """
 		customer_data = self.customer_data
 		customer_data['street_address'] = Address.objects.create(**self.address_data)
 		customer_data['billing_address'] = Address.objects.create(**self.address_data)
@@ -104,7 +104,6 @@ class UnitTests(TestCase):
 		self.assertEqual(retreived_engineer.first_name, self.engineer_name['first_name'], "First Names didn't match!")
 		self.assertEqual(retreived_engineer.last_name, self.engineer_name['last_name'], "Last names didn't match!")
 
-	@skip("price not working")
 	def test_can_input_and_retrieve_part_data(self):
 		Part.objects.create(**self.part_data)
 		retreived_part = Part.objects.get(serial_number=self.part_data['serial_number'])
@@ -115,15 +114,40 @@ class UnitTests(TestCase):
 		self.assertEqual(retreived_part.location, self.part_data['location'], "location didn't match!")
 		self.assertEqual(retreived_part.used, self.part_data['used'], "used didn't match!")
 
-	@skip("Setting up")
+	@skip("price not working")
 	def test_can_input_and_retrieve_service_order_data(self):
 		# We copy the service order data and add foriegn keys
 		service_order = self.service_order_data
-		service_order_data['customer'] = Customer.objects.create(**self.customer_data)
-		service_order_data['machine'] = Machine.objects.create(**self.machine_data)
-		service_order_data['engineer'] = Engineer.objects.create(**self.engineer_name)
+		customer_data = self.create_customer()
+		service_order['customer'] = Customer.objects.create(**customer_data)
+		service_order['machine'] = Machine.objects.create(**self.machine_data)
+		service_order['engineer'] = ServiceEngineer.objects.create(**self.engineer_name)
 
+		part1 = Part.objects.create(**self.part_data)
+
+		"""
+		# Copy part_data and change the serial number to make it unique
+		part_data2 = self.part_data
+		part_data2['serial_number'] = 2468
+		part2 = Part.objects.create(**part_data2)
+		#service_order['parts'] = [part1, part2]
+		"""
+
+		service_order['parts'] = part1
+
+		#import pdb; pdb.set_trace()
 		ServiceLog.objects.create(**service_order)
 		retreived_service_log = ServiceLog.objects.get(rma_number=self.service_order_data['rma_number'])
 
-		self.assertEqual(service_order_data.rma_number, self.service_order_data['rma_number'], "rma_number didn't match!")
+		self.assertEqual(retreived_service_log.rma_number, service_order['rma_number'], "rma_number didn't match!")
+		self.assertEqual(retreived_service_log.date, service_order['date'], "date didn't match!")
+		self.assertEqual(retreived_service_log.condition, service_order['condition'], "condition didn't match!")
+		self.assertEqual(retreived_service_log.correction, service_order['correction'], "correction didn't match!")
+		self.assertEqual(retreived_service_log.notes, service_order['notes'], "notes didn't match!")
+		self.assertEqual(retreived_service_log.purchase_order, service_order['purchase_order'], "purchase_order didn't match!")
+		#Decimal bug;
+		#self.assertEqual(retreived_service_log.zone_charge, service_order['zone_charge'], "zone_charge didn't match!")
+		#self.assertEqual(retreived_service_log.parts_charge, service_order['parts_charge'], "parts_charge didn't match!")
+		self.assertEqual(retreived_service_log.customer, service_order['customer'], "customer didn't match!")
+		self.assertEqual(retreived_service_log.machine, service_order['machine'], "machine didn't match!")
+		self.assertEqual(retreived_service_log.engineer, service_order['engineer'], "engineer didn't match!")

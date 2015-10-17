@@ -66,7 +66,7 @@ class ServiceLog(models.Model):
     correction = models.TextField(max_length=500)
     notes = models.TextField(max_length=500)
     #make this one to many?
-    parts = models.OneToOneField(Part)
+    parts = models.ForeignKey(Part)
     engineer = models.ForeignKey(ServiceEngineer)
     purchase_order = models.IntegerField(default=0)
     zone_charge = models.DecimalField(max_digits=9, decimal_places=2, default=Decimal('0.00'))
