@@ -31,6 +31,7 @@ class Customer(models.Model):
     company_name = models.CharField(max_length=200)
     contact_name = models.CharField(max_length=200, null=True, blank=True)
     email = models.EmailField()
+    # Move me======================================================================
     street_address = models.ForeignKey(Address, related_name='address_street')
     billing_address = models.ForeignKey(Address, related_name='address_billing')
 
@@ -50,6 +51,7 @@ class Part(models.Model):
     price = models.DecimalField(max_digits=9, decimal_places=2)
     location = models.CharField(max_length=200)
     used = models.BooleanField(default=False)
+    service_log = models.ForeignKey("ServiceLog", null=True)
 
     def __str__(self):
         items = [str(self.serial_number), str(self.part_number),\
@@ -65,8 +67,6 @@ class ServiceLog(models.Model):
     condition = models.TextField(max_length=500) #condition/cause
     correction = models.TextField(max_length=500)
     notes = models.TextField(max_length=500)
-    #make this one to many?
-    parts = models.ForeignKey(Part)
     engineer = models.ForeignKey(ServiceEngineer)
     purchase_order = models.IntegerField(default=0)
     zone_charge = models.DecimalField(max_digits=9, decimal_places=2, default=Decimal('0.00'))
