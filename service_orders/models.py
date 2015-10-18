@@ -18,8 +18,16 @@ class Address(models.Model):
     street = models.CharField(max_length=200)
     city = models.CharField(max_length=200)
     state = models.CharField(max_length=200)
-    zip = models.IntegerField()
+    zip_code = models.IntegerField()
     phone = models.CharField(max_length=12)
+    customer = models.ForeignKey("Customer", related_name='customer', null=True)
+
+    ADDRESS_TYPE_CHOICES = (
+                                ('street', 'Street Address'), 
+                                ('billing', 'Billing Address'),
+                                ('street_billing', 'Street/Billing Address') 
+                            )
+    address_type = models.CharField(max_length=200, default='street_billing')
     
     def __str__(self):
         items = [self.street, self.city, self.state, \
@@ -31,9 +39,6 @@ class Customer(models.Model):
     company_name = models.CharField(max_length=200)
     contact_name = models.CharField(max_length=200, null=True, blank=True)
     email = models.EmailField()
-    # Move me======================================================================
-    street_address = models.ForeignKey(Address, related_name='address_street')
-    billing_address = models.ForeignKey(Address, related_name='address_billing')
 
     def __str__(self):
         return self.company_name

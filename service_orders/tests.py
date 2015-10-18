@@ -19,8 +19,9 @@ class UnitTests(TestCase):
 			'street': '1313 Mockingbird Ln.',
 	    	'city': 'Los Angeles',
 	    	'state': 'CA',
-	    	'zip': 12345,
-	    	'phone': '555-555-5555'
+	    	'zip_code': 12345,
+	    	'phone': '555-555-5555',
+	    	'address_type': 'street'
     	}
 
 		self.customer_data = {
@@ -56,14 +57,6 @@ class UnitTests(TestCase):
 	def tearDown(self):
 		pass
 
-	def create_customer(self):
-		""" Function to help create customer object by addeing addresses """
-		customer_data = self.customer_data
-		customer_data['street_address'] = Address.objects.create(**self.address_data)
-		customer_data['billing_address'] = Address.objects.create(**self.address_data)
-
-		return customer_data
-
 	def test_can_input_and_retrieve_machine_data(self):
 		Machine.objects.create(**self.machine_data)
 		retreived_machine = Machine.objects.get(serial_number=self.machine_data['serial_number'])
@@ -77,25 +70,21 @@ class UnitTests(TestCase):
 
 	def test_can_input_and_retrieve_address_data(self):
 		new_address = Address.objects.create(**self.address_data)
+		new_address.customer = Customer.objects.create(**self.customer_data)
 		retreived_address = Address.objects.get(id=new_address.id)
 
 		self.assertEqual(retreived_address.street, self.address_data['street'], "street didn't match!")
 		self.assertEqual(retreived_address.city, self.address_data['city'], "city didn't match!")
 		self.assertEqual(retreived_address.state, self.address_data['state'], "state didn't match!")
-		self.assertEqual(retreived_address.zip, self.address_data['zip'], "zip didn't match!")
+		self.assertEqual(retreived_address.zip_code, self.address_data['zip_code'], "zip didn't match!")
 
 	def test_can_input_and_retrieve_customer_data(self):
-		# We copy the customer date and add 2 Address objects
-		customer_data = self.create_customer()
-
-		new_customer = Customer.objects.create(**customer_data)
+		new_customer = Customer.objects.create(**self.customer_data)
 		retreived_customer = Customer.objects.get(id=new_customer.id)
 
-		self.assertEqual(retreived_customer.company_name, customer_data['company_name'], "company_name didn't match!")
-		self.assertEqual(retreived_customer.contact_name, customer_data['contact_name'], "contact_name didn't match!")
-		self.assertEqual(retreived_customer.email, customer_data['email'], "email didn't match!")
-		self.assertEqual(retreived_customer.street_address, customer_data['street_address'], "street_address didn't match!")
-		self.assertEqual(retreived_customer.billing_address, customer_data['billing_address'], "billing_address didn't match!")
+		self.assertEqual(retreived_customer.company_name, self.customer_data['company_name'], "company_name didn't match!")
+		self.assertEqual(retreived_customer.contact_name, self.customer_data['contact_name'], "contact_name didn't match!")
+		self.assertEqual(retreived_customer.email, self.customer_data['email'], "email didn't match!")
 
 	def test_can_input_and_retrieve_service_engineer_data(self):
 		ServiceEngineer.objects.create(**self.engineer_name)
@@ -118,8 +107,7 @@ class UnitTests(TestCase):
 	def test_can_input_and_retrieve_service_order_data(self):
 		# We copy the service order data and add foriegn keys
 		service_order = self.service_order_data
-		customer_data = self.create_customer()
-		service_order['customer'] = Customer.objects.create(**customer_data)
+		service_order['customer'] = Customer.objects.create(**self.customer_data)
 		service_order['machine'] = Machine.objects.create(**self.machine_data)
 		service_order['engineer'] = ServiceEngineer.objects.create(**self.engineer_name)
 
@@ -139,6 +127,7 @@ class UnitTests(TestCase):
 		ServiceLog.objects.create(**service_order)
 		retreived_service_log = ServiceLog.objects.get(rma_number=self.service_order_data['rma_number'])
 
+		# Add payment category and service category tests==========================================================
 		self.assertEqual(retreived_service_log.rma_number, service_order['rma_number'], "rma_number didn't match!")
 		self.assertEqual(retreived_service_log.date, service_order['date'], "date didn't match!")
 		self.assertEqual(retreived_service_log.condition, service_order['condition'], "condition didn't match!")
