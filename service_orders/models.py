@@ -76,7 +76,8 @@ class ServiceLog(models.Model):
     purchase_order = models.IntegerField(default=0)
     zone_charge = models.DecimalField(max_digits=9, decimal_places=2, default=Decimal('0.00'))
     parts_charge = models.DecimalField(max_digits=9, decimal_places=2, default=Decimal('0.00'))
-    #take total out of admin since it's not a real total and compute on input?
+    #take total out of admin since it's not a real total and compute on input? =====================================
+    # move to form_views process_form_data =========================================================================
     total_charge = models.DecimalField(null=True, blank=True, max_digits=9, decimal_places=2, default=Decimal('0.0000'))
     PAYMENT_CATEGORY_CHOICES = (
                                 ('installation', 'Installation'), 
