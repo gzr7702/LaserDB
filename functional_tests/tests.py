@@ -1,4 +1,5 @@
 from django.test import LiveServerTestCase
+from unittest import skip
 
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
@@ -32,6 +33,7 @@ class SOTestCase(LiveServerTestCase):
 			welcome_header = self.browser.find_element_by_tag_name('h2')
 			self.assertIn('Welcome to LaserCo', welcome_header.text)
 
+	@skip("Not finished")
 	def test_add_engineer(self):
 		"""
 		self.browser.get('%s%s' % (self.live_server_url, '/'))
@@ -55,7 +57,7 @@ class SOTestCase(LiveServerTestCase):
 		last_name_field.send_keys('Smith')
 		last_name_field.send_keys(Keys.RETURN)
 
-"""
+	@skip("Not finished")
 	def test_serviceform(self):
 		print("test_serviceform")
 		self.browser.get('%s%s' % (self.live_server_url, '/'))
@@ -78,4 +80,3 @@ class SOTestCase(LiveServerTestCase):
 			print(option)
 
 		print("at SO form")
-"""

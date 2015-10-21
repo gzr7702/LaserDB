@@ -49,7 +49,7 @@ class InvoiceForm(ModelForm):
         #how do we pass the parts model in here?
         model = ServiceLog
         available_parts = Part.objects.filter(used=False)
-        fields = ['parts', 'purchase_order', 'zone_charge', 'parts_charge',\
+        fields = ['purchase_order', 'zone_charge', 'parts_charge',\
                   'payment_category', 'service_category']
 
 class ConfirmationForm(ModelForm):

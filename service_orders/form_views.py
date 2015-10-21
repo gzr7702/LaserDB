@@ -71,6 +71,9 @@ def process_form_data(form_list):
     for form in form_list:
         for field, value in form.cleaned_data.items():
             setattr(instance, field, value)
+    # Total zone_charge and parts_charge and set attribute
+    total = instance.parts_charge + instance.zone_charge
+    setattr(instance, total_charge, total)
     instance.save()
 
 class ServiceOrderWizard(SessionWizardView):
