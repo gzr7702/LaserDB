@@ -28,6 +28,8 @@ TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 
 ALLOWED_HOSTS = []
 
+LOGIN_URL = 'login'
+
 
 # Application definition
 
@@ -40,6 +42,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.formtools',
     'haystack',
+    #'django_nose',
     'service_orders',
 )
 
@@ -56,6 +59,16 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'LaserDB.urls'
 
 WSGI_APPLICATION = 'LaserDB.wsgi.application'
+
+# Test stuff
+"""
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+
+NOSE_ARGS = [
+    '--with-coverage',
+    '--cover-package=LaserDB,service_orders',
+]
+"""
 
 
 # Database

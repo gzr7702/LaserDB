@@ -9,10 +9,10 @@ urlpatterns = patterns('',
     url(r'^search/', include('haystack.urls')),
     
     #user auth urls
-    url(r'^accounts/login/$', 'LaserDB.views.login'),
-    url(r'^accounts/auth/$', 'LaserDB.views.auth_view'),
-    url(r'^accounts/logout/$', 'LaserDB.views.logout'),
-    url(r'^accounts/loggedin/$', 'LaserDB.views.loggedin'),
-    url(r'^accounts/invalid/$', 'LaserDB.views.invalid_login'),
+    url(r'^accounts/login/$', 'LaserDB.views.login', name='login'),
+    url(r'^accounts/auth/$', 'LaserDB.views.auth_view', name='auth'),
+    url(r'^accounts/logout/$', 'LaserDB.views.logout_view', name='logout'),
+    url(r'^accounts/loggedin/$', 'LaserDB.views.loggedin', name='loggedin'),
+    url(r'^accounts/invalid/$', 'LaserDB.views.invalid_login', name='invalid_login'),
     
 )

@@ -1,7 +1,8 @@
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render, render_to_response, redirect
 from django.core.context_processors import request
 from django.http import response, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
 from django.core.context_processors import csrf
 from django.contrib import auth
 
@@ -33,5 +34,6 @@ def loggedin(request):
 def invalid_login(request):
     return render_to_response('invalid_login.html')
 
-def logout(request):
-    return render_to_response('logout.html')
+def logout_view(request):
+    logout(request)
+    return redirect('login')
