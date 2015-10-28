@@ -57,7 +57,7 @@ class UnitTests(TestCase):
 		response = auth_view(request)
 		self.assertEqual(response.url, '/accounts/loggedin/')
 
-	def test_auth_view_user_no_exists(self):
+	def test_auth_view_user_doesnt_exists(self):
 		""" Sad Path of auth_view() """
 		#import pdb; pdb.set_trace()	
 		request = self.factory.post(reverse('auth'), {'username': 'syncopy', 'password': 'asdfasdf'})
