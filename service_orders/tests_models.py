@@ -67,7 +67,7 @@ class UnitTests(TestCase):
 		}
 		self.service_order = ServiceLog.objects.create(**self.service_order_data)
 
-	def test_can_input_and_retrieve_machine_data(self):
+	def test_read_machine_data(self):
 		retreived_machine = Machine.objects.get(serial_number=self.machine_data['serial_number'])
 
 		self.assertEqual(retreived_machine.serial_number , self.machine_data['serial_number'], "serial_number didn't match!")
@@ -77,7 +77,21 @@ class UnitTests(TestCase):
 		self.assertEqual(retreived_machine.passwd, self.machine_data['passwd'], "passwd didn't match!")
 		self.assertEqual(retreived_machine.pulse_count, self.machine_data['pulse_count'], "pulse_count didn't match!")
 
-	def test_can_input_and_retrieve_address_data(self):
+	def test_update_machine_data(self):
+		new_model = "Smithfield 7"
+		self.machine.model = new_model
+
+		self.machine.save()
+		retreived_machine = Machine.objects.get(serial_number=self.machine.serial_number)
+		self.assertEqual(retreived_machine.model, new_model, "serial_number didn't match!")
+		self.assertEqual(retreived_machine.manufacture_date, self.machine_data['manufacture_date'], "manufacture_date didn't match!")
+		"""
+		self.assertEqual(retreived_machine.software_version, self.machine_data['software_version'], "software_version didn't match!")
+		self.assertEqual(retreived_machine.passwd, self.machine_data['passwd'], "passwd didn't match!")
+		self.assertEqual(retreived_machine.pulse_count, self.machine_data['pulse_count'], "pulse_count didn't match!")
+		"""
+
+	def test_read_address_data(self):
 		retreived_address = Address.objects.get(id=self.address.id)
 
 		self.assertEqual(retreived_address.street, self.address_data['street'], "street didn't match!")
@@ -85,20 +99,20 @@ class UnitTests(TestCase):
 		self.assertEqual(retreived_address.state, self.address_data['state'], "state didn't match!")
 		self.assertEqual(retreived_address.zip_code, self.address_data['zip_code'], "zip didn't match!")
 
-	def test_can_input_and_retrieve_customer_data(self):
+	def test_read_customer_data(self):
 		retreived_customer = Customer.objects.get(id=self.customer.id)
 
 		self.assertEqual(retreived_customer.company_name, self.customer_data['company_name'], "company_name didn't match!")
 		self.assertEqual(retreived_customer.contact_name, self.customer_data['contact_name'], "contact_name didn't match!")
 		self.assertEqual(retreived_customer.email, self.customer_data['email'], "email didn't match!")
 
-	def test_can_input_and_retrieve_service_engineer_data(self):
+	def test_read_service_engineer_data(self):
 		retreived_engineer = ServiceEngineer.objects.get(id=self.engineer.id)
 
 		self.assertEqual(retreived_engineer.first_name, self.engineer_name['first_name'], "First Names didn't match!")
 		self.assertEqual(retreived_engineer.last_name, self.engineer_name['last_name'], "Last names didn't match!")
 
-	def test_can_input_and_retrieve_part_data(self):
+	def test_read_part_data(self):
 		""" We test all part data except for ServiceLog data since that would be redundant """
 		retreived_part = Part.objects.get(serial_number=self.part.serial_number)
 
@@ -108,7 +122,7 @@ class UnitTests(TestCase):
 		self.assertEqual(retreived_part.location, self.part_data['location'], "location didn't match!")
 		self.assertEqual(retreived_part.used, self.part_data['used'], "used didn't match!")
 
-	def test_can_input_and_retrieve_service_order_data(self):
+	def test_read_service_order_data(self):
 		retreived_service_log = ServiceLog.objects.get(rma_number=self.service_order.rma_number)
 
 		self.assertEqual(retreived_service_log.rma_number, self.service_order.rma_number, "rma_number didn't match!")

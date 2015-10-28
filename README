@@ -9,22 +9,18 @@ Using Python 3.4 and Django 1.7, and Bootstrap
 
 To do:
 
+TESTING:
+- refactor test_views in LaserDB to use RequestFactory() only
+- Add update, delete to model testing
+- complete view testing in service_orders
+- form testing in service_orders
+
+FRONT END:
 - change SO form to only display unused parts
 - Display of SO's not showing parts
 - add error message for bad forms
+- Add links to add extra customer, machines, addresses, and parts from the larger forms?
+
 - Notes field on Info form should not be required
 - Add search for RMA, Part serial number, Engineer
-- Add links to add extra customer, machines, addresses, and parts from the larger forms?
-- Add name field to parts model?
-- Complete Testing
 - Add API
-
-form data:
-
-[{'first_name': 'asdfasd', 'last_name': 'asdfasd'}, 
-{'date': datetime.date(2013, 10, 23), 'rma_number': 1341}, 
-{'company_name': 'asdf', 'contact_name': 'asdf', 'email': 'a@s.com'}, 
-{'state': 'Nebraska', 'phone': '2342356443', 'street': '22 North Pane Blvd', 'city': 'Rochco', 'zip': 123}, 
-{'model': 'sadf', 'serial_number': 123, 'pulse_count': 34, 'software_version': 234.0, 'manufacture_date': datetime.date(2044, 11, 23), 'passwd': '234'}, 
-{'quantity': 1, 'part_number': 1231, 'serial_number': 1231, 'price': Decimal('1.09')}, 
-{'payment_category': 'billable_repair', 'zone_charge': Decimal('0.00'), 'condition': 'asdf', 'notes': 'asdf', 'correction': 'asdfasd', 'purchase_order': 0, 'service_category': 'complaint', 'parts_charge': Decimal('0.00')}]
