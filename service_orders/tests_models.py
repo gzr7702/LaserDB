@@ -3,6 +3,7 @@
 """
 
 from django.test import TestCase
+from django.core.exceptions import ObjectDoesNotExist
 from unittest import skip
 from .models import Machine, ServiceEngineer, Address, Customer, Part, ServiceLog
 from datetime import date
@@ -102,6 +103,13 @@ class UnitTests(TestCase):
 		self.assertEqual(retreived_machine.passwd, new_password, "passwd didn't match!")
 		self.assertEqual(retreived_machine.pulse_count, new_pulse_count, "pulse_count didn't match!")
 
+	def test_delete_machine_data(self):
+		serial_number = self.machine.serial_number
+		self.machine.delete()
+
+		with self.assertRaises(ObjectDoesNotExist):
+			Machine.objects.get(serial_number=serial_number)
+
 	def test_read_address_data(self):
 		retreived_address = Address.objects.get(id=self.address.id)
 
@@ -136,6 +144,13 @@ class UnitTests(TestCase):
 		self.assertEqual(retreived_address.phone, new_phone_number, "phone_number didn't match!")
 		self.assertEqual(retreived_address.address_type, new_address_type, "address_type didn't match!")
 
+	def test_delete_address_data(self):
+		address_id = self.address.id
+		self.address.delete()
+
+		with self.assertRaises(ObjectDoesNotExist):
+			Address.objects.get(id=address_id)
+
 	def test_read_customer_data(self):
 		retreived_customer = Customer.objects.get(id=self.customer.id)
 
@@ -158,6 +173,13 @@ class UnitTests(TestCase):
 		self.assertEqual(retreived_customer.contact_name, new_contact_name, "contact_name didn't match!")
 		self.assertEqual(retreived_customer.email, new_email, "email didn't match!")
 
+	def test_delete_customer_data(self):
+		customer_id = self.customer.id
+		self.customer.delete()
+
+		with self.assertRaises(ObjectDoesNotExist):
+			Customer.objects.get(id=customer_id)
+
 	def test_read_service_engineer_data(self):
 		retreived_engineer = ServiceEngineer.objects.get(id=self.engineer.id)
 
@@ -175,6 +197,13 @@ class UnitTests(TestCase):
 
 		self.assertEqual(retreived_engineer.first_name, new_first_name, "First Names didn't match!")
 		self.assertEqual(retreived_engineer.last_name, new_last_name, "Last names didn't match!")
+
+	def test_delete_service_engineer_data(self):
+		service_engineer_id = self.engineer.id
+		self.engineer.delete()
+
+		with self.assertRaises(ObjectDoesNotExist):
+			ServiceEngineer.objects.get(id=service_engineer_id)
 
 	def test_read_part_data(self):
 		""" We test all part data except for ServiceLog data since that would be redundant """
@@ -204,6 +233,13 @@ class UnitTests(TestCase):
 		self.assertEqual(retreived_part.price, new_price, "price didn't match!")
 		self.assertEqual(retreived_part.location, new_location, "location didn't match!")
 		self.assertEqual(retreived_part.used, new_used, "used didn't match!")
+
+	def test_delete_part_data(self):
+		serial_number = self.part.serial_number
+		self.part.delete()
+
+		with self.assertRaises(ObjectDoesNotExist):
+			Part.objects.get(serial_number=serial_number)
 
 	def test_read_service_order_data(self):
 		retreived_service_log = ServiceLog.objects.get(rma_number=self.service_order.rma_number)
@@ -259,3 +295,10 @@ class UnitTests(TestCase):
 		self.assertEqual(retreived_service_log.engineer, self.service_order.engineer, "engineer didn't match!")
 		self.assertEqual(retreived_service_log.payment_category, self.service_order.payment_category, "payment_category didn't match!")
 		self.assertEqual(retreived_service_log.service_category, self.service_order.service_category, "service_category didn't match!")
+
+	def test_delete_service_order_data(self):
+		rma_number = self.service_order.rma_number
+		self.service_order.delete()
+
+		with self.assertRaises(ObjectDoesNotExist):
+			ServiceLog.objects.get(rma_number=rma_number)
