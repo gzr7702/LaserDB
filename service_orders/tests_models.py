@@ -162,6 +162,18 @@ class UnitTests(TestCase):
 		self.assertEqual(retreived_engineer.first_name, self.engineer_name['first_name'], "First Names didn't match!")
 		self.assertEqual(retreived_engineer.last_name, self.engineer_name['last_name'], "Last names didn't match!")
 
+	def test_update_service_engineer_data(self):
+		new_first_name = "Paula"
+		self.engineer.first_name = new_first_name
+		new_last_name = "Peduka"
+		self.engineer.last_name = new_last_name
+		self.engineer.save()
+
+		retreived_engineer = ServiceEngineer.objects.get(id=self.engineer.id)
+
+		self.assertEqual(retreived_engineer.first_name, new_first_name, "First Names didn't match!")
+		self.assertEqual(retreived_engineer.last_name, new_last_name, "Last names didn't match!")
+
 	def test_read_part_data(self):
 		""" We test all part data except for ServiceLog data since that would be redundant """
 		retreived_part = Part.objects.get(serial_number=self.part.serial_number)
