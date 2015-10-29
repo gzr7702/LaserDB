@@ -221,3 +221,41 @@ class UnitTests(TestCase):
 		self.assertEqual(retreived_service_log.engineer, self.service_order.engineer, "engineer didn't match!")
 		self.assertEqual(retreived_service_log.payment_category, self.service_order.payment_category, "payment_category didn't match!")
 		self.assertEqual(retreived_service_log.service_category, self.service_order.service_category, "service_category didn't match!")
+
+	def test_update_service_order_data(self):
+		new_date = date(2013, 4, 22)
+		self.service_order.date = new_date
+		new_condition = 'It was thrown down the stairs'
+		self.service_order.condition = new_condition
+		new_correction = 'Replaced mirror'
+		self.service_order.correction = new_correction
+		new_notes = 'They broke 0sdfasdfasdfthe mirror'
+		self.service_order.notes = new_notes
+		new_purchase_order = 8888
+		self.service_order.purchase_order = new_purchase_order
+		new_zone_charge = Decimal("2.30")
+		self.service_order.zone_charge = new_zone_charge
+		new_parts_charge= Decimal("3.44")
+		self.service_order.parts_charge = new_parts_charge
+		new_payment_category= 'sales_mkt_dem'
+		self.service_order.payment_category = new_payment_category
+		new_service_category= 'complaint'
+		self.service_order.service_category = new_service_category
+
+		self.service_order.save()
+
+		retreived_service_log = ServiceLog.objects.get(rma_number=self.service_order.rma_number)
+
+		self.assertEqual(retreived_service_log.rma_number, self.service_order.rma_number, "rma_number didn't match!")
+		self.assertEqual(retreived_service_log.date, self.service_order.date, "date didn't match!")
+		self.assertEqual(retreived_service_log.condition, self.service_order.condition, "condition didn't match!")
+		self.assertEqual(retreived_service_log.correction, self.service_order.correction, "correction didn't match!")
+		self.assertEqual(retreived_service_log.notes, self.service_order.notes, "notes didn't match!")
+		self.assertEqual(retreived_service_log.purchase_order, self.service_order.purchase_order, "purchase_order didn't match!")
+		self.assertEqual(retreived_service_log.zone_charge, self.service_order.zone_charge, "zone_charge didn't match!")
+		self.assertEqual(retreived_service_log.parts_charge, self.service_order.parts_charge, "parts_charge didn't match!")
+		self.assertEqual(retreived_service_log.customer, self.service_order.customer, "customer didn't match!")
+		self.assertEqual(retreived_service_log.machine, self.service_order.machine, "machine didn't match!")
+		self.assertEqual(retreived_service_log.engineer, self.service_order.engineer, "engineer didn't match!")
+		self.assertEqual(retreived_service_log.payment_category, self.service_order.payment_category, "payment_category didn't match!")
+		self.assertEqual(retreived_service_log.service_category, self.service_order.service_category, "service_category didn't match!")
