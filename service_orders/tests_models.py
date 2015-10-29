@@ -109,8 +109,8 @@ class UnitTests(TestCase):
 		self.assertEqual(retreived_address.city, self.address_data['city'], "city didn't match!")
 		self.assertEqual(retreived_address.state, self.address_data['state'], "state didn't match!")
 		self.assertEqual(retreived_address.zip_code, self.address_data['zip_code'], "zip didn't match!")
-
-		# ADD phone and address type ===========================================================================
+		self.assertEqual(retreived_address.phone, self.address_data['phone'], "phone_number didn't match!")
+		self.assertEqual(retreived_address.address_type, self.address_data['address_type'], "address_type didn't match!")
 
 	def test_update_address_data(self):
 		new_street = "44 Main Street"
