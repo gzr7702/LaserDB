@@ -110,6 +110,8 @@ class UnitTests(TestCase):
 		self.assertEqual(retreived_address.state, self.address_data['state'], "state didn't match!")
 		self.assertEqual(retreived_address.zip_code, self.address_data['zip_code'], "zip didn't match!")
 
+		# ADD phone and address type ===========================================================================
+
 	def test_update_address_data(self):
 		new_street = "44 Main Street"
 		self.address.street = new_street
@@ -183,6 +185,25 @@ class UnitTests(TestCase):
 		self.assertEqual(retreived_part.price, self.part_data['price'], "price didn't match!")
 		self.assertEqual(retreived_part.location, self.part_data['location'], "location didn't match!")
 		self.assertEqual(retreived_part.used, self.part_data['used'], "used didn't match!")
+
+	def test_update_part_data(self):
+		""" We test all part data except for ServiceLog data since that would be redundant """
+		new_part_number = 7777
+		self.part.part_number = new_part_number
+		new_price = Decimal("4.95")
+		self.part.price = new_price
+		new_location = "Mattapan"
+		self.part.location = new_location
+		new_used = False
+		self.part.used = new_used
+		self.part.save()
+
+		retreived_part = Part.objects.get(serial_number=self.part.serial_number)
+
+		self.assertEqual(retreived_part.part_number, new_part_number, "part_number didn't match!")
+		self.assertEqual(retreived_part.price, new_price, "price didn't match!")
+		self.assertEqual(retreived_part.location, new_location, "location didn't match!")
+		self.assertEqual(retreived_part.used, new_used, "used didn't match!")
 
 	def test_read_service_order_data(self):
 		retreived_service_log = ServiceLog.objects.get(rma_number=self.service_order.rma_number)
