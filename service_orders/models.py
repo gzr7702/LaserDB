@@ -7,7 +7,7 @@ class Machine(models.Model):
     serial_number = models.IntegerField(primary_key=True)
     model = CharField(max_length=200)
     manufacture_date = models.DateField()
-    software_version = models.FloatField()
+    software_version = models.CharField(max_length=200)
     passwd = models.CharField(max_length=200)
     pulse_count = models.IntegerField()
     

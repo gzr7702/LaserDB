@@ -11,7 +11,7 @@ class UnitTests(TestCase):
 			'serial_number': randint(500,10000),
 	    	'model': 'The Bearfield',
 	    	'manufacture_date': date(2014, 9, 20),
-	    	'software_version': 2.25,
+	    	'software_version': "2.25",
 	    	'passwd': 'Frobnosticator',
 	    	'pulse_count': 223
     	}
@@ -80,16 +80,23 @@ class UnitTests(TestCase):
 	def test_update_machine_data(self):
 		new_model = "Smithfield 7"
 		self.machine.model = new_model
+		new_date = date(2015, 10, 20)
+		self.machine.manufacture_date = new_date
+		new_software_version = "5.9.88"
+		self.machine.software_version = new_software_version
+		new_password = "nadafinga"
+		self.machine.passwd= new_password
+		new_pulse_count = 440
+		self.machine.pulse_count = new_pulse_count
 
 		self.machine.save()
 		retreived_machine = Machine.objects.get(serial_number=self.machine.serial_number)
+
 		self.assertEqual(retreived_machine.model, new_model, "serial_number didn't match!")
-		self.assertEqual(retreived_machine.manufacture_date, self.machine_data['manufacture_date'], "manufacture_date didn't match!")
-		"""
-		self.assertEqual(retreived_machine.software_version, self.machine_data['software_version'], "software_version didn't match!")
-		self.assertEqual(retreived_machine.passwd, self.machine_data['passwd'], "passwd didn't match!")
-		self.assertEqual(retreived_machine.pulse_count, self.machine_data['pulse_count'], "pulse_count didn't match!")
-		"""
+		self.assertEqual(retreived_machine.manufacture_date, new_date, "manufacture_date didn't match!")
+		self.assertEqual(retreived_machine.software_version, new_software_version, "software_version didn't match!")
+		self.assertEqual(retreived_machine.passwd, new_password, "passwd didn't match!")
+		self.assertEqual(retreived_machine.pulse_count, new_pulse_count, "pulse_count didn't match!")
 
 	def test_read_address_data(self):
 		retreived_address = Address.objects.get(id=self.address.id)
