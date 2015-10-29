@@ -141,6 +141,21 @@ class UnitTests(TestCase):
 		self.assertEqual(retreived_customer.contact_name, self.customer_data['contact_name'], "contact_name didn't match!")
 		self.assertEqual(retreived_customer.email, self.customer_data['email'], "email didn't match!")
 
+	def test_update_customer_data(self):
+		new_company_name = "Bobby's Laser House"
+		self.customer.company_name = new_company_name
+		new_contact_name = "Bobby Benuccio"
+		self.customer.contact_name = new_contact_name
+		new_email = "bobby@blh.com"
+		self.customer.email = new_email
+
+		self.customer.save()
+		retreived_customer = Customer.objects.get(id=self.customer.id)
+
+		self.assertEqual(retreived_customer.company_name, new_company_name, "company_name didn't match!")
+		self.assertEqual(retreived_customer.contact_name, new_contact_name, "contact_name didn't match!")
+		self.assertEqual(retreived_customer.email, new_email, "email didn't match!")
+
 	def test_read_service_engineer_data(self):
 		retreived_engineer = ServiceEngineer.objects.get(id=self.engineer.id)
 
