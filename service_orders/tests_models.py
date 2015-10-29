@@ -1,3 +1,7 @@
+""" Tests for our models. Create is tested between setUP() and the read tests.
+	Update and Delete have their own tests.
+"""
+
 from django.test import TestCase
 from unittest import skip
 from .models import Machine, ServiceEngineer, Address, Customer, Part, ServiceLog
@@ -105,6 +109,30 @@ class UnitTests(TestCase):
 		self.assertEqual(retreived_address.city, self.address_data['city'], "city didn't match!")
 		self.assertEqual(retreived_address.state, self.address_data['state'], "state didn't match!")
 		self.assertEqual(retreived_address.zip_code, self.address_data['zip_code'], "zip didn't match!")
+
+	def test_update_address_data(self):
+		new_street = "44 Main Street"
+		self.address.street = new_street
+		new_city = "Piscataway"
+		self.address.city = new_city
+		new_state = "Joisey"
+		self.address.state = new_state
+		new_zip = 76543
+		self.address.zip_code = new_zip
+		new_phone_number = "212-222-2222"
+		self.address.phone = new_phone_number
+		new_address_type = "billing"
+		self.address.address_type = new_address_type
+
+		self.address.save()
+		retreived_address = Address.objects.get(id=self.address.id)
+
+		self.assertEqual(retreived_address.street, new_street, "street didn't match!")
+		self.assertEqual(retreived_address.city, new_city, "city didn't match!")
+		self.assertEqual(retreived_address.state, new_state, "state didn't match!")
+		self.assertEqual(retreived_address.zip_code, new_zip, "zip didn't match!")
+		self.assertEqual(retreived_address.phone, new_phone_number, "phone_number didn't match!")
+		self.assertEqual(retreived_address.address_type, new_address_type, "address_type didn't match!")
 
 	def test_read_customer_data(self):
 		retreived_customer = Customer.objects.get(id=self.customer.id)
