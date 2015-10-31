@@ -51,7 +51,7 @@ class UnitTests(TestCase):
 	def test_auth_view_user_exists(self):
 		""" Happy Path of auth_view() """
 		request = self.factory.post(reverse('auth'), {'username': self.user_id, 'password': self.user_password})
-		request.user = self.user_id
+		request.user = self.user
 		request = add_middleware_to_request(request, SessionMiddleware)
 		request.session.save()
 		response = auth_view(request)
@@ -59,9 +59,9 @@ class UnitTests(TestCase):
 
 	def test_auth_view_user_doesnt_exists(self):
 		""" Sad Path of auth_view() """
-		#import pdb; pdb.set_trace()	
+		# Using a fake user to fail
 		request = self.factory.post(reverse('auth'), {'username': 'syncopy', 'password': 'asdfasdf'})
-		request.user = self.user_id
+		request.user = self.user
 		request = add_middleware_to_request(request, SessionMiddleware)
 		request.session.save()
 		response = auth_view(request)
