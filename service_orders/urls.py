@@ -4,6 +4,7 @@ from service_orders.form_views import ServiceOrderWizard, WIZARD_FORMS
 
 urlpatterns = patterns('',
     url(r'^$', 'service_orders.views.home', name='service_order_home'),
+    url(r'partsinventory/$', 'service_orders.views.parts_home', name='parts'),
     url(r'individualreport/(?P<rma_number>\d+)/$', 'service_orders.views.individual_report', name='individual_report'),
     url(r'engineerform/$', 'service_orders.form_views.engineer_form', name='engineer_form'),
     url(r'customerform/$', 'service_orders.form_views.customer_form', name='customer_form'),

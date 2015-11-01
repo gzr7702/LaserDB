@@ -11,10 +11,6 @@ def home(request):
     return render_to_response('service_orders.html', context)
 
 @login_required
-def service_order_form(request):
-    return render_to_response('repair_form.html')
-
-@login_required
 def individual_report(request, rma_number):
     service_order = ServiceLog.objects.get(rma_number=rma_number)
     context = {'service_order':service_order}
