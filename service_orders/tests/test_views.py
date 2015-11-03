@@ -4,8 +4,8 @@ from django.contrib.auth.models import User
 from django.contrib.sessions.middleware import SessionMiddleware
 from django.template.loader import render_to_string
 from unittest import skip
-from .views import home, individual_report, parts_home, parts_report
-from .models import Machine, Customer, Address, ServiceEngineer, Part, ServiceLog
+from service_orders.views import home, individual_report, parts_home, parts_report
+from service_orders.models import Machine, Customer, Address, ServiceEngineer, Part, ServiceLog
 from random import randint
 from datetime import date
 from decimal import Decimal

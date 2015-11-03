@@ -10,10 +10,10 @@ Using Python 3.4 and Django 1.7, and Bootstrap
 To do:
 
 TESTING:
-- refactor test_views in LaserDB to use RequestFactory() only
-- Add update, delete to model testing
-- complete view testing in service_orders
 - form testing in service_orders
+- refactor test_views in LaserDB to use RequestFactory() only
+- refactor all tests to use fixtures or mock
+- add functional tests
 
 FRONT END:
 - change SO form to only display unused parts
@@ -21,6 +21,7 @@ FRONT END:
 - add error message for bad forms
 - Add links to add extra customer, machines, addresses, and parts from the larger forms?
 
+OTHER:
 - Notes field on Info form should not be required
 - Add search for RMA, Part serial number, Engineer
 - Add API

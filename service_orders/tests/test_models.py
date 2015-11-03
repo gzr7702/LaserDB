@@ -5,7 +5,7 @@
 from django.test import TestCase
 from django.core.exceptions import ObjectDoesNotExist
 from unittest import skip
-from .models import Machine, ServiceEngineer, Address, Customer, Part, ServiceLog
+from service_orders.models import Machine, ServiceEngineer, Address, Customer, Part, ServiceLog
 from datetime import date
 from decimal import Decimal
 from random import randint
