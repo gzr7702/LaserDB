@@ -35,6 +35,7 @@ def customer_form(request):
 
 def address_form(request):
     form = AddressForm(request.POST or None)
+    #import pdb;pdb.set_trace()
     if form.is_valid():
         save_form = form.save(commit=False)
         save_form.save()
@@ -60,6 +61,7 @@ def parts_form(request):
 def add_parts_form(request):
     """Add parts from the Service Order page"""
     form = PartsForm(request.POST or None)
+    #import pdb; pdb.set_trace()
     if form.is_valid():
         save_form = form.save(commit=False)
         save_form.save()
@@ -73,7 +75,7 @@ def process_form_data(form_list):
             setattr(instance, field, value)
     # Total zone_charge and parts_charge and set attribute
     total = instance.parts_charge + instance.zone_charge
-    setattr(instance, total_charge, total)
+    setattr(instance, instance.total_charge, total)
     instance.save()
 
 class ServiceOrderWizard(SessionWizardView):
