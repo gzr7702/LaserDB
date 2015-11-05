@@ -71,14 +71,22 @@ class UnitTests(TestCase):
 		with self.assertTemplateUsed('parts.html'):
 			render_to_string('parts.html')
 
-	@skip("")
 	def test_parts_report_view(self):
-		# what's the url?
-		request = self.factory.get(reverse(''))
+		# Create dependant objects to service order
+		data.service_order_data['customer'] = Customer.objects.create(**data.customer_data)
+		data.service_order_data['machine'] = Machine.objects.create(**data.machine_data)
+		data.service_order_data['engineer'] = ServiceEngineer.objects.create(**data.engineer_name)
+
+		# Then create the service order itself and add it to the part data
+		data.part_data['service_log'] = ServiceLog.objects.create(**data.service_order_data)
+		#import pdb; pdb.set_trace()
+		part = Part.objects.create(**data.part_data)
+
+		request = self.factory.get('')
 		request.user = self.user
 		request = add_middleware_to_request(request, SessionMiddleware)
 		request.session.save()
-		response = parts_report(request, self.part.serial_number)
+		response = parts_report(request, part.serial_number)
 		self.assertEqual(response.status_code, 200)
-		with self.assertTemplateUsed('parts_report.html'):
-			render_to_string('parts_report.html')
+		with self.assertTemplateUsed('part_report.html'):
+			render_to_string('part_report.html')

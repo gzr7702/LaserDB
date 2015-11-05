@@ -58,7 +58,7 @@ class UnitTests(TestCase):
 		data.service_order_data['engineer'] = ServiceEngineer.objects.create(**data.engineer_name)
 
 		# Then create the service order itself and add it to the part data
-		data.part_data['service_orders'] = ServiceLog.objects.create(**data.service_order_data)
+		data.part_data['service_order'] = ServiceLog.objects.create(**data.service_order_data)
 
 		response = self.client.post(reverse('parts_form'), data.part_data)
 		self.assertRedirects(response=response, expected_url=reverse('parts_form'), status_code=302, 

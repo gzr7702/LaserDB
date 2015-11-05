@@ -11,7 +11,6 @@ To do:
 
 TESTING:
 - form testing in service_orders
-- refactor test_views in LaserDB to use RequestFactory() only?
 - refactor model tests to use data object
 - add functional tests
 
