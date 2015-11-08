@@ -23,7 +23,6 @@ address_data = {
 	'state': 'CA',
 	'zip_code': 12345,
 	'phone': '555-555-5555',
-	#'customer': Customer.objects.create(**customer_data),
 	'address_type': 'street'
 }
 
@@ -42,12 +41,10 @@ part_data = {
 
 service_order_data = {
 	'rma_number': randint(1, 800),
-	#'customer': Customer.objects.create(**customer_data),
 	'date': date(2015, 10, 13),
 	'condition': 'It was broked',
 	'correction': 'Fixeded it',
 	'notes': 'This is customer has no idea how to treat an expensive laser.',
-	#'engineer': ServiceEngineer.objects.create(**engineer_name),
 	'purchase_order': 66666,
 	'zone_charge': Decimal("7.77"),
 	'parts_charge': Decimal("8.95"),

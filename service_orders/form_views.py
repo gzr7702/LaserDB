@@ -51,6 +51,7 @@ def machine_form(request):
     return render_to_response('machineform.html', locals(), context_instance=RequestContext(request))
 
 def parts_form(request):
+    """ Add parts from the add parts page """
     form = PartsForm(request.POST or None)
     if form.is_valid():
         save_form = form.save(commit=False)
@@ -59,9 +60,8 @@ def parts_form(request):
     return render_to_response('partsform.html', locals(), context_instance=RequestContext(request))
 
 def add_parts_form(request):
-    """Add parts from the Service Order page"""
+    """Add parts from the Service Order page through it's own popup """
     form = PartsForm(request.POST or None)
-    #import pdb; pdb.set_trace()
     if form.is_valid():
         save_form = form.save(commit=False)
         save_form.save()
@@ -71,22 +71,20 @@ def add_parts_form(request):
 def process_form_data(form_list):
     instance = ServiceLog()
     for form in form_list:
+        form.is_valid()
         for field, value in form.cleaned_data.items():
             setattr(instance, field, value)
-    # Total zone_charge and parts_charge and set attribute
+    # We total zone_charge and parts_charge and set attribute
     total = instance.parts_charge + instance.zone_charge
-    setattr(instance, instance.total_charge, total)
+    setattr(instance, 'total_charge', str(total))
     instance.save()
 
 class ServiceOrderWizard(SessionWizardView):
     def get_template_names(self):
-        #import pdb; pdb.set_trace()
         return [TEMPLATES[self.steps.current]]
 
     def done(self, form_list, **kwargs):
-        print("in done ---------------------")
         process_form_data(form_list)
-        #return HttpResponseRedirect('done.html')
         return render_to_response('done.html', {
             'form_data': [form.cleaned_data for form in form_list],
         })
