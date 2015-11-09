@@ -21,6 +21,7 @@ class UnitTests(TestCase):
 
 	def test_get_engineer_form(self):
 		response = self.client.get(reverse('engineer_form'))
+		self.assertEqual(response.status_code, 200)
 		self.assertTemplateUsed(response, 'engineerform.html')
 
 	def test_post_customer_form(self):
@@ -30,6 +31,7 @@ class UnitTests(TestCase):
 
 	def test_get_customer_form(self):
 		response = self.client.get(reverse('customer_form'))
+		self.assertEqual(response.status_code, 200)
 		self.assertTemplateUsed(response, 'customerform.html')
 
 	def test_post_address_form(self):
@@ -43,6 +45,7 @@ class UnitTests(TestCase):
 
 	def test_get_address_form(self):
 		response = self.client.get(reverse('address_form'))
+		self.assertEqual(response.status_code, 200)
 		self.assertTemplateUsed(response, 'addressform.html')
 
 	def test_post_machine_form(self):
@@ -52,6 +55,7 @@ class UnitTests(TestCase):
 
 	def test_get_machine_form(self):
 		response = self.client.get(reverse('machine_form'))
+		self.assertEqual(response.status_code, 200)
 		self.assertTemplateUsed(response, 'machineform.html')
 
 	def test_post_parts_form(self):
@@ -69,6 +73,7 @@ class UnitTests(TestCase):
 
 	def test_get_parts_form(self):
 		response = self.client.get(reverse('parts_form'))
+		self.assertEqual(response.status_code, 200)
 		self.assertTemplateUsed(response, 'partsform.html')
 
 	def test_add_parts_form_post(self):
@@ -85,6 +90,7 @@ class UnitTests(TestCase):
 
 	def test_add_parts_form_get(self):
 		response = self.client.get(reverse('add_parts_form'))
+		self.assertEqual(response.status_code, 200)
 		self.assertTemplateUsed(response, 'addpart.html')
 
 	def test_process_form_data(self):
