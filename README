@@ -9,11 +9,6 @@ Using Python 3.4 and Django 1.7, and Bootstrap
 
 To do:
 
-TESTING:
-- form testing in service_orders
-- refactor model tests to use data object
-- add functional tests
-
 FRONT END:
 - change SO form to only display unused parts
 - Display of SO's not showing parts
