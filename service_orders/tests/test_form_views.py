@@ -139,14 +139,39 @@ class UnitTests(TestCase):
 		total = Decimal('16.72')
 		self.assertEqual(retreived_service_log.total_charge, total, "total didn't match!")
 
-	@skip("not yet")
 	def test_service_order_wizard(self):
 		""" Test done(), but not get_template_names since it's part of Django """
-		# Create dependant objects to service order
-		form_data = data.service_order_data
-		form_data['customer'] = Customer.objects.create(**data.customer_data)
-		form_data['machine'] = Machine.objects.create(**data.machine_data)
-		form_data['engineer'] = ServiceEngineer.objects.create(**data.engineer_name)
 
-		so = ServiceOrderWizard()
-		so.done(form_data)
+		# Create objects
+		machine = Machine.objects.create(**data.machine_data)
+		customer = Customer.objects.create(**data.customer_data)
+		engineer = ServiceEngineer.objects.create(**data.engineer_name)
+
+		# Create InfoForm
+		info_form_data = {'engineer': engineer.id,
+						'rma_number': data.service_order_data['rma_number'],
+		 				'date': data.service_order_data['date'], 'customer': customer.id,
+						'machine': machine.serial_number,
+						'condition': data.service_order_data['condition']}
+		info_form = InfoForm(info_form_data)
+
+		# Create AssessmentForm
+		assessment_form_data = {'correction': data.service_order_data['correction'],
+								'notes': data.service_order_data['notes']}
+		assessment_form = AssessmentForm(assessment_form_data)
+
+		# Create InvoiceForm
+		invoice_form_data = {'purchase_order': data.service_order_data['purchase_order'],
+							'zone_charge': data.service_order_data['zone_charge'],
+							'parts_charge': data.service_order_data['parts_charge'],
+							'payment_category': data.service_order_data['payment_category'],
+							'service_category': data.service_order_data['service_category']}
+		invoice_form = InvoiceForm(invoice_form_data)
+
+		form_list = ValuesView(OrderedDict([('info', info_form),
+					('assessment', assessment_form), ('invoice', invoice_form)]))
+
+		sow = ServiceOrderWizard()
+		response = sow.done(form_list)
+
+		self.assertTemplateUsed(response, 'done.html')
