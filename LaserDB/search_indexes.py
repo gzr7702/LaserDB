@@ -9,6 +9,6 @@ class ServiceOrderIndex(indexes.SearchIndex, indexes.Inexable):
 	def get_model(self):
 		return ServiceLog
 
-    def index_queryset(self, using=None):
-        """Used when the entire index for model is updated."""
-        return self.get_model().objects.filter(rma_number__eq=datetime.datetime.now())
+	def index_queryset(self, using=None):
+		"""Used when the entire index for model is updated."""
+		return self.get_model().objects.filter(rma_number__eq=datetime.datetime.now())

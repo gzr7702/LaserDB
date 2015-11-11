@@ -8,7 +8,6 @@ from service_orders.views import home, individual_report, parts_home, parts_repo
 from service_orders.models import Machine, Customer, Address, ServiceEngineer, Part, ServiceLog
 import service_orders.tests.data as data
 from random import randint
-from datetime import date
 from decimal import Decimal
 
 def add_middleware_to_request(request, middleware_class):
