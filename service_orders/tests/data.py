@@ -21,7 +21,7 @@ address_data = {
 	'street': '1313 Mockingbird Ln.',
 	'city': 'Los Angeles',
 	'state': 'CA',
-	'zip_code': 12345,
+	'zip_code': '12345',
 	'phone': '555-555-5555',
 	'address_type': 'street'
 }

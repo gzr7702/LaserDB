@@ -18,16 +18,16 @@ class Address(models.Model):
     street = models.CharField(max_length=200)
     city = models.CharField(max_length=200)
     state = models.CharField(max_length=200)
-    zip_code = models.IntegerField()
+    zip_code = models.CharField(max_length=200)
     phone = models.CharField(max_length=12)
-    customer = models.ForeignKey("Customer", related_name='customer', null=True)
+    customer = models.ForeignKey("Customer", related_name='customer', null=True, blank=True)
 
     ADDRESS_TYPE_CHOICES = (
                                 ('street', 'Street Address'), 
                                 ('billing', 'Billing Address'),
                                 ('street_billing', 'Street/Billing Address') 
                             )
-    address_type = models.CharField(max_length=200, default='street_billing')
+    address_type = models.CharField(max_length=200)
     
     def __str__(self):
         items = [self.street, self.city, self.state, \
@@ -56,7 +56,7 @@ class Part(models.Model):
     price = models.DecimalField(max_digits=9, decimal_places=2)
     location = models.CharField(max_length=200)
     used = models.BooleanField(default=False)
-    service_log = models.ForeignKey("ServiceLog", null=True)
+    service_log = models.ForeignKey("ServiceLog", null=True, blank=True)
 
     def __str__(self):
         items = [str(self.serial_number), str(self.part_number),\

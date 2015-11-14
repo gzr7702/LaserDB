@@ -1,6 +1,7 @@
 from django.test import LiveServerTestCase
 from unittest import skip
 from datetime import date
+from decimal import Decimal
 import service_orders.tests.data as data
 from service_orders.models import Machine, ServiceEngineer, Address, Customer, Part, ServiceLog
 
@@ -15,7 +16,6 @@ class SOTestCase(LiveServerTestCase):
 	def tearDown(self):
 		self.browser.quit()
 
-	@skip("")
 	def test_we_can_reach_front_page_and_login(self):
 		""" Test that front page is working and we can log in successfully """
 		self.browser.get('%s%s' % (self.live_server_url, '/'))
@@ -40,7 +40,6 @@ class SOTestCase(LiveServerTestCase):
 
 		self.browser.implicitly_wait(3)
 
-	@skip("not yet")
 	def test_create_engineer(self):
 		""" Test that we can successfully add an engineer """
 
@@ -56,13 +55,13 @@ class SOTestCase(LiveServerTestCase):
 
 		last_name_field.send_keys(Keys.RETURN)
 
+		self.browser.implicitly_wait(3)
+
 		engineer = ServiceEngineer.objects.get(last_name=last_name)
 		self.assertEqual(engineer.first_name, first_name, "First Names didn't match!")
 		self.assertEqual(engineer.last_name, last_name, "Last names didn't match!")
 
-		self.browser.implicitly_wait(3)
 
-	@skip("for now")
 	def test_create_customer(self):
 		""" Test that we can successfully add a customer"""
 
@@ -82,22 +81,21 @@ class SOTestCase(LiveServerTestCase):
 
 		email_field.send_keys(Keys.RETURN)
 
+		self.browser.implicitly_wait(3)
 
 		customer = Customer.objects.get(company_name=company_name)
 		self.assertEqual(customer.company_name, company_name, "Company Names didn't match!")
 		self.assertEqual(customer.contact_name, contact_name, "Contact names didn't match!")
 		self.assertEqual(customer.email, email, "Email addresses didn't match!")
 
-		self.browser.implicitly_wait(3)
 
-	@skip("not submitting to DB")
 	def test_create_address(self):
 		""" Test that we can successfully add an address"""
 
 		self.browser.get('%s%s' % (self.live_server_url, '/serviceorders/addressform/'))
 
 		street_field = self.browser.find_element_by_id('id_street')
-		street_address = "0001 Testing Boulevard"
+		street_address = "100000001 Testing Boulevard"
 		street_field.send_keys(street_address)
 
 		city_field = self.browser.find_element_by_id('id_city')
@@ -108,21 +106,31 @@ class SOTestCase(LiveServerTestCase):
 		state = "New Testico"
 		state_field.send_keys(state)
 
+		zip_code_field = self.browser.find_element_by_id('id_zip_code')
+		zip_code = '11211'
+		zip_code_field.send_keys(zip_code)
+
 		phone_field = self.browser.find_element_by_id('id_phone')
 		phone_number = "212-555-1212"
 		phone_field.send_keys(phone_number)
 
-		phone_field.send_keys(Keys.RETURN)
+		type_field = self.browser.find_element_by_id('id_address_type')
+		address_type = "street"
+		type_field.send_keys(address_type)
+
+		type_field.send_keys(Keys.RETURN)
+		self.browser.implicitly_wait(3)
 
 		address = Address.objects.get(street=street_address)
 		self.assertEqual(address.city, city, "City Names didn't match!")
-		self.assertEqual(customer.state, state, "State names didn't match!")
-		self.assertEqual(customer.phone, phone_number, "Phone numbers didn't match!")
+		self.assertEqual(address.state, state, "State names didn't match!")
+		self.assertEqual(address.zip_code, zip_code, "Zip codes didn't match!")
+		self.assertEqual(address.phone, phone_number, "Phone numbers didn't match!")
+		self.assertEqual(address.address_type, address_type, "Address types didn't match!")
 
-		self.browser.implicitly_wait(3)
 
 	def test_create_machine(self):
-		""" Test that we can successfully add an address"""
+		""" Test that we can successfully add a machine"""
 
 		self.browser.get('%s%s' % (self.live_server_url, '/serviceorders/machineform/'))
 
@@ -154,13 +162,45 @@ class SOTestCase(LiveServerTestCase):
 
 		self.browser.implicitly_wait(3)
 
-		#import pdb; pdb.set_trace()
 		machine = Machine.objects.get(serial_number=serial_number)
 		self.assertEqual(machine.model, model, "Models didn't match!")
 		self.assertEqual(machine.manufacture_date, manufacture_date, "Manufacture dates didn't match!")
 		self.assertEqual(machine.software_version, software_version, "Software versions didn't match!")
 		self.assertEqual(machine.passwd, passwd, "Passwords didn't match!")
 
+	@skip("not working")
+	def test_create_part(self):
+		""" Test that we can successfully add a part """
+
+		self.browser.get('%s%s' % (self.live_server_url, '/serviceorders/partsform/'))
+
+		serial_number_field = self.browser.find_element_by_id('id_serial_number')
+		serial_number = "1000002"
+		serial_number_field.send_keys(serial_number)
+
+		part_number_field = self.browser.find_element_by_id('id_part_number')
+		part_number = "The Tester"
+		part_number_field.send_keys(part_number)
+
+		price_field = self.browser.find_element_by_id('id_price')
+		price = "3.99"
+		price_field.send_keys(price)
+
+		location_field = self.browser.find_element_by_id('id_location')
+		location = "New York"
+		location_field.send_keys(location)
+
+		used_check_box = self.browser.find_element_by_id('id_used')
+		used_check_box.click()
+
+		used_check_box.send_keys(Keys.RETURN)
+
+		self.browser.implicitly_wait(3)
+
+		part = Part.objects.get(serial_number=serial_number)
+		self.assertEqual(part.part_number, part_number, "Parts didn't match!")
+		self.assertEqual(part.price, price, "Prices didn't match!")
+		self.assertEqual(part.location, location, "Locations didn't match!")
 
 	@skip("This is the big test, don't implement now")
 	def test_serviceform(self):

@@ -35,7 +35,6 @@ def customer_form(request):
 
 def address_form(request):
     form = AddressForm(request.POST or None)
-    #import pdb;pdb.set_trace()
     if form.is_valid():
         save_form = form.save(commit=False)
         save_form.save()

@@ -83,7 +83,7 @@ class UnitTests(TestCase):
 		self.address.city = new_city
 		new_state = "Joisey"
 		self.address.state = new_state
-		new_zip = 76543
+		new_zip = '76543'
 		self.address.zip_code = new_zip
 		new_phone_number = "212-222-2222"
 		self.address.phone = new_phone_number

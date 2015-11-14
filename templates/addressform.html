@@ -19,12 +19,16 @@
             <div class="col-md-2">{{ form.state }}</div>
         </div>
         <div class="row">
-            <div class="col-md-2">{{ form.zip.label }}</div>
-            <div class="col-md-2">{{ form.zip }}</div>
+            <div class="col-md-2">{{ form.zip_code.label }}</div>
+            <div class="col-md-2">{{ form.zip_code }}</div>
         </div>
         <div class="row">
             <div class="col-md-2">{{ form.phone.label }}</div>
             <div class="col-md-2">{{ form.phone }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">{{ form.address_type.label }}</div>
+            <div class="col-md-2">{{ form.address_type }}</div>
         </div>
         <div class="row">
             <div class="col-md-2 col-md-offset-5"><input type="submit" value="{% trans "submit" %}"/></div>
