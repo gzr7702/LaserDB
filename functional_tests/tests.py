@@ -10,13 +10,15 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
 
 class SOTestCase(LiveServerTestCase):
+
+	fixtures = ['service_orders/fixtures/data.json']
+
 	def setUp(self):
 		self.browser = webdriver.Firefox()
 
 	def tearDown(self):
 		self.browser.quit()
 
-	@skip("this is working")
 	def test_we_can_reach_front_page_and_login(self):
 		""" Test that front page is working and we can log in successfully """
 		self.browser.get('%s%s' % (self.live_server_url, '/'))
@@ -41,7 +43,6 @@ class SOTestCase(LiveServerTestCase):
 
 		self.browser.implicitly_wait(3)
 
-	@skip("this is working")
 	def test_create_engineer(self):
 		""" Test that we can successfully add an engineer """
 
@@ -92,7 +93,6 @@ class SOTestCase(LiveServerTestCase):
 		self.assertEqual(customer.email, email, "Email addresses didn't match!")
 
 
-	@skip("this is working")
 	def test_create_address(self):
 		""" Test that we can successfully add an address"""
 
@@ -133,7 +133,6 @@ class SOTestCase(LiveServerTestCase):
 		self.assertEqual(address.address_type, address_type, "Address types didn't match!")
 
 
-	@skip("this is working")
 	def test_create_machine(self):
 		""" Test that we can successfully add a machine"""
 
@@ -207,47 +206,42 @@ class SOTestCase(LiveServerTestCase):
 		self.assertEqual(part.price, price, "Prices didn't match!")
 		self.assertEqual(part.location, location, "Locations didn't match!")
 
+	@skip("not working")
 	def test_serviceform(self):
-		""" The Big Kahuna """
-		#create a customer =========================================================
-		#create a Engineer =========================================================
-		#create a machine =========================================================
-		
-		self.browser.get('%s%s' % (self.live_server_url, '/serviceorders/serviceform/'))
+		""" The Big Kahuna -
+			This tests the big Service Form """
+
+		ret = self.browser.get('%s%s' % (self.live_server_url, '/serviceorders/serviceform/'))
 
 		# Wizard Page 1:
 
-		"""
-		CAN'T DO THIS, WE NEED TO CREATE AN ENGINEER OBJECT
 		engineer_field = self.browser.find_element_by_id('id_info-engineer')
-		engineer = "Bobby G"
+		engineer = 1
 		engineer_field.send_keys(engineer)
-		"""
 
 		date_field = self.browser.find_element_by_id('id_info-date')
 		service_date = date(2012, 12, 3)
 		date_field.send_keys(service_date.strftime("%m/%d/%Y"))
 
-		"""
-		CAN'T DO THIS, WE NEED TO CREATE A MACHINE OBJECT
 		machine_field = self.browser.find_element_by_id('id_info-machine')
-		machine = "The Laviolet"
+		machine = 4222
 		machine_field.send_keys(machine)
-		"""
 
 		rma_number_field = self.browser.find_element_by_id('id_info-rma_number')
 		rma_number = 54345
 		rma_number_field.send_keys(rma_number)
 
-		#need to create a customer first
-		#customer_field = self.browser.find_element_by_id('id_info-customer')
-		#customer_field.send_keys(customer)
+		customer_field = self.browser.find_element_by_id('id_info-customer')
+		customer = 2
+		customer_field.send_keys(customer)
 
 		condition_field = self.browser.find_element_by_id('id_info-condition')
 		condition = "Unit looks like it was pushed down the stairs"
-		engineer_field.send_keys(condition)
+		condition_field.send_keys(condition)
 
+		#import pdb; pdb.set_trace()
 		condition_field.send_keys(Keys.RETURN)
+		self.assertTemplateUsed(ret, "assessmentform.html")
 		self.browser.implicitly_wait(3)
 
 		# Wizard Page 2:

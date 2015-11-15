@@ -1,0 +1,649 @@
+[
+{
+  "fields": {
+    "username": "rob",
+    "first_name": "",
+    "is_superuser": false,
+    "user_permissions": [],
+    "groups": [],
+    "password": "pbkdf2_sha256$12000$krJWTe3RhaXO$5/eg5ObjXIRDnuOeikoRIyEo3wckVGOhYQLqFog3hEI=",
+    "last_login": "2015-11-14T16:12:30.685Z",
+    "date_joined": "2015-10-13T13:55:10.943Z",
+    "is_staff": false,
+    "email": "",
+    "last_name": "",
+    "is_active": true
+  },
+  "model": "auth.user",
+  "pk": 1
+},
+{
+  "fields": {
+    "username": "admin",
+    "first_name": "",
+    "is_superuser": true,
+    "user_permissions": [],
+    "groups": [],
+    "password": "pbkdf2_sha256$12000$Bqu84GpPppIo$ou5ltNawV7Z4GMJ1o9nrAooSn+u+qOgrQjEFpAQKpD4=",
+    "last_login": "2015-10-20T01:49:39.938Z",
+    "date_joined": "2015-10-20T01:49:39.938Z",
+    "is_staff": true,
+    "email": "",
+    "last_name": "",
+    "is_active": true
+  },
+  "model": "auth.user",
+  "pk": 2
+},
+{
+  "fields": {
+    "expire_date": "2015-11-03T23:06:03.970Z",
+    "session_data": "NGE0MGFlY2JhMWNjNmEwN2I1MzEwYmNmYWFhNjM3ZDA2NjJkNmM3ODp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiMjk3MDY0MjRlY2FiZDBmNmIyMzg4ODkwMDk0Y2JkZWQ1ODBlOTM0MSIsIl9hdXRoX3VzZXJfaWQiOjEsIndpemFyZF9zZXJ2aWNlX29yZGVyX3dpemFyZCI6eyJzdGVwX2RhdGEiOnt9LCJleHRyYV9kYXRhIjp7fSwic3RlcF9maWxlcyI6e30sInN0ZXAiOiJpbmZvIn19"
+  },
+  "model": "sessions.session",
+  "pk": "bxu2bxszetus2sh1qr1j68kma349k89a"
+},
+{
+  "fields": {
+    "expire_date": "2015-11-29T02:03:36.684Z",
+    "session_data": "MWFkY2E1ZDg2ZGRjZWViNWFkYjhhOGMzNzhjN2VjMWIyMDI1NjI3Yjp7IndpemFyZF9zZXJ2aWNlX29yZGVyX3dpemFyZCI6eyJzdGVwX2ZpbGVzIjp7fSwic3RlcF9kYXRhIjp7fSwic3RlcCI6ImluZm8iLCJleHRyYV9kYXRhIjp7fX0sIl9hdXRoX3VzZXJfaGFzaCI6IjI5NzA2NDI0ZWNhYmQwZjZiMjM4ODg5MDA5NGNiZGVkNTgwZTkzNDEiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOjF9"
+  },
+  "model": "sessions.session",
+  "pk": "c4rsm5s08rrgmcs6vyy4rkwl5qd4nexc"
+},
+{
+  "fields": {
+    "expire_date": "2015-11-29T17:12:00.605Z",
+    "session_data": "YzA3NjFiNmI2ZTJhYmM5YmQ0Y2U0MTEzNjM5ODdlMTE2MjQzYzcyMDp7IndpemFyZF9zZXJ2aWNlX29yZGVyX3dpemFyZCI6eyJzdGVwX2ZpbGVzIjp7fSwic3RlcF9kYXRhIjp7fSwic3RlcCI6bnVsbCwiZXh0cmFfZGF0YSI6e319fQ=="
+  },
+  "model": "sessions.session",
+  "pk": "ep4vkodwg2caymlcdcy2rdurst81w9z5"
+},
+{
+  "fields": {
+    "expire_date": "2015-11-17T04:55:07.609Z",
+    "session_data": "MDQ3YzkyYjFmNTU0YWRjMDQ5YjMyODdlYzI0ZTg4ZDA0MDZkOGU3ZDp7IndpemFyZF9zZXJ2aWNlX29yZGVyX3dpemFyZCI6eyJzdGVwIjoiaW52b2ljZSIsInN0ZXBfZmlsZXMiOnsiYXNzZXNzbWVudCI6e30sImluZm8iOnt9fSwic3RlcF9kYXRhIjp7ImFzc2Vzc21lbnQiOnsiYXNzZXNzbWVudC1ub3RlcyI6WyJhc2RmIl0sInNlcnZpY2Vfb3JkZXJfd2l6YXJkLWN1cnJlbnRfc3RlcCI6WyJhc3Nlc3NtZW50Il0sImFzc2Vzc21lbnQtY29ycmVjdGlvbiI6WyJhc2RmYXNkZiJdLCJjc3JmbWlkZGxld2FyZXRva2VuIjpbImZwOFI5NGhiQUViYnFrWXk4Wmxpa1YzUzhTb1NNVnZHIl19LCJpbmZvIjp7ImluZm8tbWFjaGluZSI6WyI5OTkiXSwiaW5mby1kYXRlIjpbIjA0LzIzLzIwMTUiXSwiaW5mby1jdXN0b21lciI6WyIyIl0sImluZm8tY29uZGl0aW9uIjpbImFzZGYiXSwic2VydmljZV9vcmRlcl93aXphcmQtY3VycmVudF9zdGVwIjpbImluZm8iXSwiaW5mby1ybWFfbnVtYmVyIjpbIjMyNCJdLCJpbmZvLWVuZ2luZWVyIjpbIjIiXSwiY3NyZm1pZGRsZXdhcmV0b2tlbiI6WyJmcDhSOTRoYkFFYmJxa1l5OFpsaWtWM1M4U29TTVZ2RyJdfX0sImV4dHJhX2RhdGEiOnt9fSwiX2F1dGhfdXNlcl9pZCI6MSwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiIyOTcwNjQyNGVjYWJkMGY2YjIzODg4OTAwOTRjYmRlZDU4MGU5MzQxIn0="
+  },
+  "model": "sessions.session",
+  "pk": "ovorgfmoklltq6gqrnd3ne40tazh33qi"
+},
+{
+  "fields": {
+    "expire_date": "2015-11-23T20:16:44.751Z",
+    "session_data": "ZmQ5OTU5Y2I0Y2UyODQ5YTc2NzIxYjQ4YjY0YzFlODZiZWZjMTM5ODp7Il9hdXRoX3VzZXJfaWQiOjEsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiMjk3MDY0MjRlY2FiZDBmNmIyMzg4ODkwMDk0Y2JkZWQ1ODBlOTM0MSJ9"
+  },
+  "model": "sessions.session",
+  "pk": "urbbpn7j4vril5v3hputv4nrqhrxaq6s"
+},
+{
+  "fields": {
+    "pulse_count": 3,
+    "software_version": "3.3",
+    "model": "Parkfield",
+    "passwd": "Blah",
+    "manufacture_date": "2013-04-23"
+  },
+  "model": "service_orders.machine",
+  "pk": 1
+},
+{
+  "fields": {
+    "pulse_count": 33,
+    "software_version": "1.3",
+    "model": "Blankenship",
+    "passwd": "pasdf",
+    "manufacture_date": "2014-10-18"
+  },
+  "model": "service_orders.machine",
+  "pk": 999
+},
+{
+  "fields": {
+    "pulse_count": 223,
+    "software_version": "2.25",
+    "model": "The Bearfield",
+    "passwd": "Frobnosticator",
+    "manufacture_date": "2014-09-20"
+  },
+  "model": "service_orders.machine",
+  "pk": 1290
+},
+{
+  "fields": {
+    "pulse_count": 223,
+    "software_version": "2.25",
+    "model": "The Bearfield",
+    "passwd": "Frobnosticator",
+    "manufacture_date": "2014-09-20"
+  },
+  "model": "service_orders.machine",
+  "pk": 4222
+},
+{
+  "fields": {
+    "pulse_count": 223,
+    "software_version": "2.25",
+    "model": "The Bearfield",
+    "passwd": "Frobnosticator",
+    "manufacture_date": "2014-09-20"
+  },
+  "model": "service_orders.machine",
+  "pk": 12345
+},
+{
+  "fields": {
+    "pulse_count": 33,
+    "software_version": "4.5",
+    "model": "allbright",
+    "passwd": "asdvaesr",
+    "manufacture_date": "2014-11-13"
+  },
+  "model": "service_orders.machine",
+  "pk": 34545
+},
+{
+  "fields": {
+    "pulse_count": 777,
+    "software_version": "4.5",
+    "model": "Regal",
+    "passwd": "puasd",
+    "manufacture_date": "2011-10-23"
+  },
+  "model": "service_orders.machine",
+  "pk": 87234
+},
+{
+  "fields": {
+    "customer": null,
+    "zip_code": "12345",
+    "address_type": "street",
+    "street": "1313 Mockingbird Ln.",
+    "state": "CA",
+    "city": "Los Angeles",
+    "phone": "555-555-5555"
+  },
+  "model": "service_orders.address",
+  "pk": 1
+},
+{
+  "fields": {
+    "customer": null,
+    "zip_code": "11211",
+    "address_type": "street",
+    "street": "55 Elm Street",
+    "state": "NY",
+    "city": "New York",
+    "phone": "234-234-2511"
+  },
+  "model": "service_orders.address",
+  "pk": 2
+},
+{
+  "fields": {
+    "customer": null,
+    "zip_code": "145111",
+    "address_type": "street",
+    "street": "22 North Pane Blvd",
+    "state": "Nebraska",
+    "city": "Rochco",
+    "phone": "234-235-6443"
+  },
+  "model": "service_orders.address",
+  "pk": 3
+},
+{
+  "fields": {
+    "customer": null,
+    "zip_code": "112333",
+    "address_type": "street",
+    "street": "88 Walnut Lane",
+    "state": "NY",
+    "city": "DeLuth",
+    "phone": "9823423444"
+  },
+  "model": "service_orders.address",
+  "pk": 4
+},
+{
+  "fields": {
+    "customer": null,
+    "zip_code": "112233",
+    "address_type": "street",
+    "street": "14 Main Street",
+    "state": "NY",
+    "city": "Bellville",
+    "phone": "323-344-3233"
+  },
+  "model": "service_orders.address",
+  "pk": 5
+},
+{
+  "fields": {
+    "customer": 27,
+    "zip_code": "12345",
+    "address_type": "street",
+    "street": "1313 Mockingbird Ln.",
+    "state": "CA",
+    "city": "Los Angeles",
+    "phone": "555-555-5555"
+  },
+  "model": "service_orders.address",
+  "pk": 6
+},
+{
+  "fields": {
+    "email": "drzyz@zyzmor.ocm",
+    "contact_name": "Bobby Brown",
+    "company_name": "Dr. Zyzmor"
+  },
+  "model": "service_orders.customer",
+  "pk": 1
+},
+{
+  "fields": {
+    "email": "aparsons@hotmail.com",
+    "contact_name": "Wally Wozniak",
+    "company_name": "Alan Parsons Project"
+  },
+  "model": "service_orders.customer",
+  "pk": 2
+},
+{
+  "fields": {
+    "email": "abee@hotmail.com",
+    "contact_name": "Ben Fernswerth",
+    "company_name": "Acme"
+  },
+  "model": "service_orders.customer",
+  "pk": 3
+},
+{
+  "fields": {
+    "email": "sw@flibbit.com",
+    "contact_name": "Sam Weiss",
+    "company_name": "Flibbit"
+  },
+  "model": "service_orders.customer",
+  "pk": 4
+},
+{
+  "fields": {
+    "email": "pb@sunn.com",
+    "contact_name": "Paul Brown",
+    "company_name": "Sunn Systems"
+  },
+  "model": "service_orders.customer",
+  "pk": 5
+},
+{
+  "fields": {
+    "email": "joe@joe.com",
+    "contact_name": "Joe Mook",
+    "company_name": "Mook Inc."
+  },
+  "model": "service_orders.customer",
+  "pk": 27
+},
+{
+  "fields": {
+    "last_name": "Birchman",
+    "first_name": "Bobby"
+  },
+  "model": "service_orders.serviceengineer",
+  "pk": 1
+},
+{
+  "fields": {
+    "last_name": "JD",
+    "first_name": "JD"
+  },
+  "model": "service_orders.serviceengineer",
+  "pk": 2
+},
+{
+  "fields": {
+    "last_name": "Flay",
+    "first_name": "Bobby"
+  },
+  "model": "service_orders.serviceengineer",
+  "pk": 3
+},
+{
+  "fields": {
+    "last_name": "McFluffinstein",
+    "first_name": "Fluffy"
+  },
+  "model": "service_orders.serviceengineer",
+  "pk": 4
+},
+{
+  "fields": {
+    "last_name": "Smith",
+    "first_name": "Joe"
+  },
+  "model": "service_orders.serviceengineer",
+  "pk": 5
+},
+{
+  "fields": {
+    "last_name": "Morales",
+    "first_name": "Joe"
+  },
+  "model": "service_orders.serviceengineer",
+  "pk": 6
+},
+{
+  "fields": {
+    "last_name": "Hasselme",
+    "first_name": "Steven"
+  },
+  "model": "service_orders.serviceengineer",
+  "pk": 26
+},
+{
+  "fields": {
+    "price": "0.03",
+    "used": true,
+    "location": "LI",
+    "part_number": 2,
+    "service_log": null
+  },
+  "model": "service_orders.part",
+  "pk": 1
+},
+{
+  "fields": {
+    "price": "3.44",
+    "used": true,
+    "location": "LI",
+    "part_number": 8,
+    "service_log": null
+  },
+  "model": "service_orders.part",
+  "pk": 3
+},
+{
+  "fields": {
+    "price": "0.04",
+    "used": true,
+    "location": "NY",
+    "part_number": 3,
+    "service_log": null
+  },
+  "model": "service_orders.part",
+  "pk": 4
+},
+{
+  "fields": {
+    "price": "0.09",
+    "used": true,
+    "location": "LI",
+    "part_number": 1,
+    "service_log": null
+  },
+  "model": "service_orders.part",
+  "pk": 5
+},
+{
+  "fields": {
+    "price": "3.44",
+    "used": true,
+    "location": "LI",
+    "part_number": 234,
+    "service_log": null
+  },
+  "model": "service_orders.part",
+  "pk": 342
+},
+{
+  "fields": {
+    "price": "9.99",
+    "used": true,
+    "location": "Long Island",
+    "part_number": 99999,
+    "service_log": null
+  },
+  "model": "service_orders.part",
+  "pk": 2256
+},
+{
+  "fields": {
+    "price": "9.99",
+    "used": true,
+    "location": "Long Island",
+    "part_number": 99999,
+    "service_log": null
+  },
+  "model": "service_orders.part",
+  "pk": 4825
+},
+{
+  "fields": {
+    "price": "9.99",
+    "used": true,
+    "location": "Long Island",
+    "part_number": 99999,
+    "service_log": null
+  },
+  "model": "service_orders.part",
+  "pk": 12345
+},
+{
+  "fields": {
+    "price": "8.99",
+    "used": false,
+    "location": "Long Island",
+    "part_number": 33,
+    "service_log": 234
+  },
+  "model": "service_orders.part",
+  "pk": 34234
+},
+{
+  "fields": {
+    "price": "3.22",
+    "used": false,
+    "location": "NY",
+    "part_number": 2342,
+    "service_log": null
+  },
+  "model": "service_orders.part",
+  "pk": 54533
+},
+{
+  "fields": {
+    "price": "3.33",
+    "used": false,
+    "location": "NY",
+    "part_number": 234,
+    "service_log": null
+  },
+  "model": "service_orders.part",
+  "pk": 99999
+},
+{
+  "fields": {
+    "price": "4.99",
+    "used": false,
+    "location": "New York",
+    "part_number": 213414,
+    "service_log": 434
+  },
+  "model": "service_orders.part",
+  "pk": 234234
+},
+{
+  "fields": {
+    "price": "8.99",
+    "used": false,
+    "location": "Long Island",
+    "part_number": 33,
+    "service_log": 555
+  },
+  "model": "service_orders.part",
+  "pk": 322345
+},
+{
+  "fields": {
+    "price": "3.33",
+    "used": false,
+    "location": "Long Island",
+    "part_number": 55,
+    "service_log": 666
+  },
+  "model": "service_orders.part",
+  "pk": 998833
+},
+{
+  "fields": {
+    "date": "2015-04-02",
+    "payment_category": "billable_repair",
+    "total_charge": "0",
+    "zone_charge": "0",
+    "engineer": 1,
+    "purchase_order": 0,
+    "notes": "asdf",
+    "parts_charge": "0",
+    "machine": 34545,
+    "correction": "asdf",
+    "condition": "asdf",
+    "service_category": "service",
+    "customer": 3
+  },
+  "model": "service_orders.servicelog",
+  "pk": 234
+},
+{
+  "fields": {
+    "date": "2015-11-18",
+    "payment_category": "installation",
+    "total_charge": "0.03",
+    "zone_charge": "0.01",
+    "engineer": 2,
+    "purchase_order": 2,
+    "notes": "yo!",
+    "parts_charge": "0.02",
+    "machine": 999,
+    "correction": "correct it!",
+    "condition": "blah",
+    "service_category": "complaint",
+    "customer": 1
+  },
+  "model": "service_orders.servicelog",
+  "pk": 333
+},
+{
+  "fields": {
+    "date": "2015-04-16",
+    "payment_category": "sales_mkt_dem",
+    "total_charge": "0",
+    "zone_charge": "0",
+    "engineer": 4,
+    "purchase_order": 0,
+    "notes": "asdf",
+    "parts_charge": "0",
+    "machine": 999,
+    "correction": "asdf",
+    "condition": "sdf",
+    "service_category": "service",
+    "customer": 1
+  },
+  "model": "service_orders.servicelog",
+  "pk": 434
+},
+{
+  "fields": {
+    "date": "2015-02-11",
+    "payment_category": "billable_repair",
+    "total_charge": "0",
+    "zone_charge": "0.02",
+    "engineer": 2,
+    "purchase_order": 0,
+    "notes": "asdfasdf",
+    "parts_charge": "0",
+    "machine": 34545,
+    "correction": "asdfasdf",
+    "condition": "asdfasd",
+    "service_category": "complaint",
+    "customer": 2
+  },
+  "model": "service_orders.servicelog",
+  "pk": 555
+},
+{
+  "fields": {
+    "date": "2014-11-13",
+    "payment_category": "",
+    "total_charge": "0",
+    "zone_charge": "9.99",
+    "engineer": 4,
+    "purchase_order": 555,
+    "notes": "Needed training",
+    "parts_charge": "0.99",
+    "machine": 87234,
+    "correction": "Trained on use, replaced filter.",
+    "condition": "Fair to good",
+    "service_category": "medical_device_report",
+    "customer": 3
+  },
+  "model": "service_orders.servicelog",
+  "pk": 666
+},
+{
+  "fields": {
+    "date": "2014-11-26",
+    "payment_category": "",
+    "total_charge": "0",
+    "zone_charge": "4.55",
+    "engineer": 2,
+    "purchase_order": 5,
+    "notes": "No notes",
+    "parts_charge": "5.44",
+    "machine": 999,
+    "correction": "Fixed it.",
+    "condition": "fair",
+    "service_category": "complaint",
+    "customer": 1
+  },
+  "model": "service_orders.servicelog",
+  "pk": 45345
+},
+{
+  "fields": {
+    "date": "2015-04-24",
+    "payment_category": "sales_mkt_dem",
+    "total_charge": "0",
+    "zone_charge": "0",
+    "engineer": 5,
+    "purchase_order": 0,
+    "notes": "Need notes",
+    "parts_charge": "0",
+    "machine": 34545,
+    "correction": "Fixed it",
+    "condition": "Fair to mid level",
+    "service_category": "service",
+    "customer": 2
+  },
+  "model": "service_orders.servicelog",
+  "pk": 112233
+},
+{
+  "fields": {
+    "date": "2014-11-07",
+    "payment_category": "installation",
+    "total_charge": "400",
+    "zone_charge": "3.44",
+    "engineer": 1,
+    "purchase_order": 23432,
+    "notes": "none",
+    "parts_charge": "4.55",
+    "machine": 999,
+    "correction": "fix it",
+    "condition": "decent",
+    "service_category": "service",
+    "customer": 2
+  },
+  "model": "service_orders.servicelog",
+  "pk": 32423452
+}
+]
