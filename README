@@ -10,6 +10,7 @@ Using Python 3.4 and Django 1.7, and Bootstrap
 To do:
 
 Back end:
+- Add parts to service order and update in db
 - Add bad form path to tests
 - Add localflavor for zip code and phone number
 - Add search for RMA, Part serial number, Engineer

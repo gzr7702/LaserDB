@@ -4,7 +4,6 @@ from django.contrib import admin
 urlpatterns = patterns('',
     url(r'^$', 'LaserDB.views.home', name='home'),
     url(r'^serviceorders/', include('service_orders.urls')),
-    url(r'^partsinventory/', include('service_orders.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^search/', include('haystack.urls')),
     

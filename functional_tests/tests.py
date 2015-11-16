@@ -14,11 +14,13 @@ class SOTestCase(LiveServerTestCase):
 	fixtures = ['service_orders/fixtures/data.json']
 
 	def setUp(self):
-		self.browser = webdriver.Firefox()
+		chromedriver_path = "/usr/local/lib/python3.4/dist-packages/chromedriver/bin/chromedriver"
+		self.browser = webdriver.Chrome(chromedriver_path)
 
 	def tearDown(self):
 		self.browser.quit()
 
+	@skip("working")
 	def test_we_can_reach_front_page_and_login(self):
 		""" Test that front page is working and we can log in successfully """
 		self.browser.get('%s%s' % (self.live_server_url, '/'))
@@ -43,6 +45,7 @@ class SOTestCase(LiveServerTestCase):
 
 		self.browser.implicitly_wait(3)
 
+	@skip("working")
 	def test_create_engineer(self):
 		""" Test that we can successfully add an engineer """
 
@@ -93,6 +96,7 @@ class SOTestCase(LiveServerTestCase):
 		self.assertEqual(customer.email, email, "Email addresses didn't match!")
 
 
+	@skip("working")
 	def test_create_address(self):
 		""" Test that we can successfully add an address"""
 
@@ -133,6 +137,7 @@ class SOTestCase(LiveServerTestCase):
 		self.assertEqual(address.address_type, address_type, "Address types didn't match!")
 
 
+	@skip("working")
 	def test_create_machine(self):
 		""" Test that we can successfully add a machine"""
 
@@ -206,7 +211,6 @@ class SOTestCase(LiveServerTestCase):
 		self.assertEqual(part.price, price, "Prices didn't match!")
 		self.assertEqual(part.location, location, "Locations didn't match!")
 
-	@skip("not working")
 	def test_serviceform(self):
 		""" The Big Kahuna -
 			This tests the big Service Form """
@@ -216,7 +220,7 @@ class SOTestCase(LiveServerTestCase):
 		# Wizard Page 1:
 
 		engineer_field = self.browser.find_element_by_id('id_info-engineer')
-		engineer = 1
+		engineer = "Bobby Birchman" 
 		engineer_field.send_keys(engineer)
 
 		date_field = self.browser.find_element_by_id('id_info-date')
@@ -224,7 +228,7 @@ class SOTestCase(LiveServerTestCase):
 		date_field.send_keys(service_date.strftime("%m/%d/%Y"))
 
 		machine_field = self.browser.find_element_by_id('id_info-machine')
-		machine = 4222
+		machine = "Blankenship 999"
 		machine_field.send_keys(machine)
 
 		rma_number_field = self.browser.find_element_by_id('id_info-rma_number')
@@ -232,57 +236,75 @@ class SOTestCase(LiveServerTestCase):
 		rma_number_field.send_keys(rma_number)
 
 		customer_field = self.browser.find_element_by_id('id_info-customer')
-		customer = 2
+		customer = "Acme"
 		customer_field.send_keys(customer)
 
 		condition_field = self.browser.find_element_by_id('id_info-condition')
 		condition = "Unit looks like it was pushed down the stairs"
 		condition_field.send_keys(condition)
 
-		#import pdb; pdb.set_trace()
-		condition_field.send_keys(Keys.RETURN)
-		self.assertTemplateUsed(ret, "assessmentform.html")
-		self.browser.implicitly_wait(3)
+		submit_button = self.browser.find_element_by_xpath("//input[@type='submit']")
+		submit_button.send_keys(Keys.RETURN)
 
 		# Wizard Page 2:
+		expected_url = '/serviceorders/serviceform/assessment/'
+		self.assertEqual(self.browser.current_url, '%s%s' % (self.live_server_url, expected_url))
 
 		correction_field = self.browser.find_element_by_id('id_assessment-correction')
 		correction = "Replaced the Fetzer Valve"
-		coorrection_field.send_keys(correction)
+		correction_field.send_keys(correction)
 
 		notes_field = self.browser.find_element_by_id('id_assessment-notes')
-		notes = "Custoemr was beligerent"
+		notes = "Customer was beligerent"
 		notes_field.send_keys(notes)
 
-		notes_field.send_keys(Keys.RETURN)
-		self.browser.implicitly_wait(3)
+		submit_button = self.browser.find_element_by_xpath("//input[@type='submit']")
+		submit_button.send_keys(Keys.RETURN)
+
 
 		# Wizard Page 3:
 
+		expected_url = '/serviceorders/serviceform/invoice/'
+		self.assertEqual(self.browser.current_url, '%s%s' % (self.live_server_url, expected_url))
+
 		zone_charge_field = self.browser.find_element_by_id('id_invoice-zone_charge')
 		zone_charge = "9.99"
-		coorrection_field.send_keys(zone_charge)
+		zone_charge_field.clear()
+		zone_charge_field.send_keys(zone_charge)
 
 		service_category_field = self.browser.find_element_by_id('id_invoice-service_category')
-		service_category = "Service"
+		service_category = "service"
 		service_category_field.send_keys(service_category)
 
 		purchase_order_field = self.browser.find_element_by_id('id_invoice-purchase_order')
-		purchase_order = "5555"
+		purchase_order = 55533
+		purchase_order_field.clear()
 		purchase_order_field.send_keys(purchase_order)
 
 		parts_charge_field = self.browser.find_element_by_id('id_invoice-parts_charge')
-		parts_charge_field = "3.33" 
-		purchase_order_field.send_keys(parts_charge)
+		parts_charge = "3.33"
+		parts_charge_field.clear()
+		parts_charge_field.send_keys(parts_charge)
 
 		payment_category_field = self.browser.find_element_by_id('id_invoice-payment_category')
-		payment_category_field = "Billable Repair" 
+		payment_category = "billable_repair" 
 		payment_category_field.send_keys(payment_category)
 
-		payment_category_field.send_keys(Keys.RETURN)
+		submit_button = self.browser.find_element_by_xpath("//input[@type='submit']")
+		submit_button.send_keys(Keys.RETURN)
+
 		self.browser.implicitly_wait(3)
 
 		service_log = ServiceLog.objects.get(rma_number=rma_number)
 		self.assertEqual(service_log.date, service_date, "Dates didn't match!")
+		self.assertEqual(service_log.condition, condition, "Condition didn't match!")
+		self.assertEqual(service_log.correction, correction, "Correction didn't match!")
+		self.assertEqual(service_log.notes, notes, "Notes didn't match!")
+		self.assertEqual(service_log.purchase_order, purchase_order, "Purchase Order didn't match!")
+		self.assertEqual(service_log.zone_charge, Decimal(zone_charge), "Zone Charge didn't match!")
+		self.assertEqual(service_log.parts_charge, Decimal(parts_charge), "Parts Charge didn't match!")
 
-		# Add more asserts here ======================================================================
+		total_charge = Decimal(zone_charge) + Decimal(parts_charge)
+		self.assertEqual(service_log.total_charge, total_charge, "Total didn't match!")
+		self.assertEqual(service_log.payment_category, payment_category, "Payment Category didn't match!")
+		self.assertEqual(service_log.service_category, service_category, "Service Category didn't match!")
