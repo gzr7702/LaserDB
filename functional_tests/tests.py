@@ -2,7 +2,6 @@ from django.test import LiveServerTestCase
 from unittest import skip
 from datetime import date
 from decimal import Decimal
-import service_orders.tests.data as data
 from service_orders.models import Machine, ServiceEngineer, Address, Customer, Part, ServiceLog
 
 from selenium import webdriver

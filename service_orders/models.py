@@ -71,7 +71,7 @@ class ServiceLog(models.Model):
     machine = models.ForeignKey(Machine)
     condition = models.TextField(max_length=500) #condition/cause
     correction = models.TextField(max_length=500)
-    notes = models.TextField(max_length=500)
+    notes = models.TextField(max_length=500, null=True, blank=True)
     engineer = models.ForeignKey(ServiceEngineer)
     purchase_order = models.IntegerField(default=0)
     zone_charge = models.DecimalField(max_digits=9, decimal_places=2, default=Decimal('0.00'))

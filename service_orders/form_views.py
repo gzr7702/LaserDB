@@ -50,7 +50,6 @@ def machine_form(request):
 def parts_form(request):
     """ Add parts from the add parts page """
     form = PartsForm(request.POST or None)
-    #import pdb;pdb.set_trace()
     if form.is_valid():
         save_form = form.save(commit=False)
         save_form.save()
