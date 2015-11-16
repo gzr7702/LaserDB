@@ -20,9 +20,10 @@ class SOTestCase(LiveServerTestCase):
 	def tearDown(self):
 		self.browser.quit()
 
-	@skip("working")
 	def test_we_can_reach_front_page_and_login(self):
-		""" Test that front page is working and we can log in successfully """
+		""" A quick test to start with. Makes sure that front page is working 
+			and we can log in successfully. """
+
 		self.browser.get('%s%s' % (self.live_server_url, '/'))
 		# Check the title while we're here
 		self.assertTrue("LaserCo", self.browser.title)
@@ -45,7 +46,6 @@ class SOTestCase(LiveServerTestCase):
 
 		self.browser.implicitly_wait(3)
 
-	@skip("working")
 	def test_create_engineer(self):
 		""" Test that we can successfully add an engineer """
 
@@ -67,8 +67,6 @@ class SOTestCase(LiveServerTestCase):
 		self.assertEqual(engineer.first_name, first_name, "First Names didn't match!")
 		self.assertEqual(engineer.last_name, last_name, "Last names didn't match!")
 
-
-	@skip("this is working")
 	def test_create_customer(self):
 		""" Test that we can successfully add a customer"""
 
@@ -96,7 +94,6 @@ class SOTestCase(LiveServerTestCase):
 		self.assertEqual(customer.email, email, "Email addresses didn't match!")
 
 
-	@skip("working")
 	def test_create_address(self):
 		""" Test that we can successfully add an address"""
 
@@ -136,8 +133,6 @@ class SOTestCase(LiveServerTestCase):
 		self.assertEqual(address.phone, phone_number, "Phone numbers didn't match!")
 		self.assertEqual(address.address_type, address_type, "Address types didn't match!")
 
-
-	@skip("working")
 	def test_create_machine(self):
 		""" Test that we can successfully add a machine"""
 
@@ -177,7 +172,6 @@ class SOTestCase(LiveServerTestCase):
 		self.assertEqual(machine.software_version, software_version, "Software versions didn't match!")
 		self.assertEqual(machine.passwd, passwd, "Passwords didn't match!")
 
-	@skip("not working")
 	def test_create_part(self):
 		""" Test that we can successfully add a part """
 
@@ -188,7 +182,7 @@ class SOTestCase(LiveServerTestCase):
 		serial_number_field.send_keys(serial_number)
 
 		part_number_field = self.browser.find_element_by_id('id_part_number')
-		part_number = "The Tester"
+		part_number = 2626
 		part_number_field.send_keys(part_number)
 
 		price_field = self.browser.find_element_by_id('id_price')
@@ -202,20 +196,20 @@ class SOTestCase(LiveServerTestCase):
 		used_check_box = self.browser.find_element_by_id('id_used')
 		used_check_box.click()
 
-		used_check_box.send_keys(Keys.RETURN)
+		submit_button = self.browser.find_element_by_xpath("//input[@type='submit']")
+		submit_button.send_keys(Keys.RETURN)
 
 		self.browser.implicitly_wait(3)
 
 		part = Part.objects.get(serial_number=serial_number)
 		self.assertEqual(part.part_number, part_number, "Parts didn't match!")
-		self.assertEqual(part.price, price, "Prices didn't match!")
+		self.assertEqual(part.price, Decimal(price), "Prices didn't match!")
 		self.assertEqual(part.location, location, "Locations didn't match!")
 
 	def test_serviceform(self):
-		""" The Big Kahuna -
-			This tests the big Service Form """
+		""" The Big Kahuna - This tests the big Service Form """
 
-		ret = self.browser.get('%s%s' % (self.live_server_url, '/serviceorders/serviceform/'))
+		self.browser.get('%s%s' % (self.live_server_url, '/serviceorders/serviceform/'))
 
 		# Wizard Page 1:
 
