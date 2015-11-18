@@ -1,5 +1,5 @@
 
-from django.contrib.formtools.wizard.views import NamedUrlSessionWizardView
+from formtools.wizard.views import NamedUrlSessionWizardView
 from django.shortcuts import render_to_response
 from .forms import EngineerForm, CustomerForm, AddressForm, MachineForm, PartsForm, InfoForm, AssessmentForm, InvoiceForm, ConfirmationForm
 from .models import ServiceLog
