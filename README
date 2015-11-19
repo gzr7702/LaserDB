@@ -15,15 +15,22 @@ haystack 2.4.1
 selenium 2.48.0
 chromedriver 2.19
 
+To run the tests:
+
+python3 manage.py test - run all tests
+python3 manage.py test service_orders - test back end
+python3 manage.py test functional_tests - test front end
+
 To do:
 
 Back end:
 - Add localflavor for zip code and phone number
-- Add search for RMA, Part serial number, Engineer
+- Fix and add testing for search for RMA, Part serial number, Engineer
 - Add API
 - Take service order total price out of admin
 
 FRONT END:
+- Add search field
 - Add update and delete functionality
 - change SO form to only display unused parts
 - Display of SO's not showing parts
