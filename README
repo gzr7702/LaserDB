@@ -3,9 +3,17 @@ The Laser Database
 Service Orders:
 
 This is a database to track the Service Order forms completed in the field by engineers
-as well as parts that they use.
+who are repairing lasers. It also tracks the parts that they use for the repairs.
 
-Using Python 3.4 and Django 1.7, and Bootstrap
+Dependencies: 
+
+Python 3.4 
+Django 1.8.6
+django-formtools 1.0
+whoosh 2.7.0
+haystack 2.4.1
+selenium 2.48.0
+chromedriver 2.19
 
 To do:
 

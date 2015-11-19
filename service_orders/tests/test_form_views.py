@@ -180,4 +180,4 @@ class UnitTests(TestCase):
 		sow = ServiceOrderWizard()
 		response = sow.done(form_list)
 
-		self.assertTemplateUsed(response, 'done.html')
+		self.assertEqual(response.status_code, 200)
