@@ -9,3 +9,5 @@
 *.pydevproject
 
 *.swp
+
+login.py
