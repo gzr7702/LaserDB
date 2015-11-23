@@ -135,9 +135,9 @@ class UnitTests(TestCase):
 		self.assertEqual(retreived_service_log.purchase_order, data.service_order_data['purchase_order'], "purchase_order didn't match!")
 		self.assertEqual(retreived_service_log.zone_charge, data.service_order_data['zone_charge'], "zone_charge didn't match!")
 		self.assertEqual(retreived_service_log.parts_charge, data.service_order_data['parts_charge'], "parts_charge didn't match!")
-		self.assertEqual(retreived_service_log.customer, data.service_order_data['customer'], "customer didn't match!")
-		self.assertEqual(retreived_service_log.machine, data.service_order_data['machine'], "machine didn't match!")
-		self.assertEqual(retreived_service_log.engineer, data.service_order_data['engineer'], "engineer didn't match!")
+		self.assertEqual(retreived_service_log.customer, customer, "customer didn't match!")
+		self.assertEqual(retreived_service_log.machine, machine, "machine didn't match!")
+		self.assertEqual(retreived_service_log.engineer, engineer, "engineer didn't match!")
 		self.assertEqual(retreived_service_log.payment_category, data.service_order_data['payment_category'], "payment_category didn't match!")
 		self.assertEqual(retreived_service_log.service_category, data.service_order_data['service_category'], "service_category didn't match!")
 
