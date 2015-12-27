@@ -11,3 +11,7 @@
 *.swp
 
 login.py
+
+LaserDBenv/*
+
+TODO.txt
