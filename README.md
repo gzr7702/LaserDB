@@ -17,7 +17,11 @@ postgresql
 
 ##To start the application:
 
-For development, you can run using the Django dev server, but for production, you need to run using a web server like nginx or apache
+For development, you can run using the Django dev server. CD to the home dir of the project and run:
+
+$ python manage.py runserver
+
+For production, you need to run using a full web server like nginx or apache
 
 ##To run the tests:
 
